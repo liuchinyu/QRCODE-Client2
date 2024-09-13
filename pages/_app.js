@@ -1,5 +1,15 @@
-import "@/styles/globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
 
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
+  // 確保 Bootstrap 的 JavaScript 在客戶端運行
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      require("bootstrap/dist/js/bootstrap.bundle.min.js");
+    }
+  }, []);
+
   return <Component {...pageProps} />;
 }
+
+export default MyApp;

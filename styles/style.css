@@ -1,0 +1,24 @@
+h1 {
+  color: red;
+}
+.background {
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  height: 100%;
+  background-image: url("../public/background.png");
+  background-size: cover;
+  background-position: center;
+  /* z-index: 1; */
+}
+.content {
+  position: absolute;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding-top: 8rem;
+}
+.vh-90 {
+  height: 90vh;
+}

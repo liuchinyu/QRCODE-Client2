@@ -91,190 +91,77 @@ export default function newForm() {
   };
 
   return (
-    <div className="container mt-4">
-      <div className="position-relative text-center">
-        {/* 圖片 */}
-        <Image
-          src="/identify.png" // 確保圖片路徑正確，放在 public 資料夾中
-          alt="Example Image"
-          width={600}
-          height={300}
-          className="img-fluid"
-          style={{ width: "80vw", height: "auto" }}
-        />
+    <div className="container vh-90 position-relative d-flex justify-content-center align-items-center mt-4 overflow-hidden ">
+      <div className="background-ticket-2"></div>
+      <div className="content-form d-flex flex-wrap justify-content-center">
         <div className="row">
-          <div className="col">
-            <h1
-              className="position-absolute start-50 translate-middle-x"
-              style={{
-                color: "black",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-                top: "5%",
-              }}
-            >
+          <div className="col-12 d-flex justify-content-center">
+            <h2 className="inform-lg-newForm inform-md-newForm inform-newForm">
+              ＊＊請確認出席人數再進行取票，每張電子票券僅限１人使用
+            </h2>
+          </div>
+          <div className="col-12 pb-lg-0 pb-md-2 pb-4">
+            <h1 className="company-name-lg company-name-md company-name ">
               {names}
             </h1>
           </div>
 
-          <div className="col-6">
-            <button
-              className="btn btn-lg position-absolute  "
-              style={{
-                color: "black",
-                backgroundColor: "lightgray",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "15%",
-                left: "30%",
-                width: "28rem",
-                color: "red",
-                textAlign: "center",
-              }}
-            >
-              剩餘的票卷數量 :{ticket}
-            </button>
-          </div>
-          {/* <div className="col-6">
-            <button
-              className="btn btn-light btn-lg position-absolute col-4 "
-              style={{
-                color: "black",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "15%",
-                left: "50%",
-                width: "15rem",
-              }}
-            >
-              {ticket}
-            </button>
-          </div> */}
-          <div className="col-6">
-            <button
-              className="btn position-absolute  "
-              style={{
-                color: "black",
-                backgroundColor: "lightgray",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "28%",
-                left: "30%",
-                width: "12rem",
-              }}
-            >
+          <div className="col-6 d-flex justify-content-end pb-lg-4 pe-5 pb-md-3 pb-2">
+            <div className="btn-lg-form btn-md-form btn-form">
               ＊需領取的數量：
-            </button>
+            </div>
           </div>
           <div className="col-6">
             <input
               type="number"
               onChange={handelNumber}
-              className="btn btn-light btn-lg position-absolute col-4 "
-              // className="form-control"
+              className="btn btn-light btn-lg d-flex input-md-form input-form"
               name="number"
               id="number"
               min="0"
-              placeholder="請輸入要領取的張數"
-              style={{
-                color: "black",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "28%",
-                left: "50%",
-                width: "15rem",
-              }}
+              // placeholder="請輸入要領取的張數"
               required
             />
           </div>
-          <div className="col-6">
-            <button
-              className="btn btn-lg position-absolute  "
-              style={{
-                color: "black",
-                backgroundColor: "lightgray",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "41%",
-                left: "30%",
-                width: "12rem",
-              }}
-            >
+          <div className="col-6 d-flex justify-content-end pb-lg-4 pe-5 pb-md-3 pb-2">
+            <div className="btn-lg-form btn-md-form btn-form">
               ＊領票人姓名：
-            </button>
+            </div>
           </div>
           <div className="col-6">
             <input
               type="text"
               onChange={handelUserName}
-              className="btn btn-light btn-lg position-absolute col-4 "
+              className="btn btn-light btn-lg d-flex input-md-form input-form"
               // className="form-control"
               name="username"
               id="username"
-              style={{
-                color: "black",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "41%",
-                left: "50%",
-                width: "15rem",
-              }}
+              // placeholder="輸入姓名"
               required
             />
           </div>
-          <div className="col-6">
-            <button
-              className="btn btn-lg  position-absolute  "
-              style={{
-                color: "black",
-                backgroundColor: "lightgray",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "54%",
-                left: "30%",
-                width: "12rem",
-              }}
-            >
-              ＊Gmail：
-            </button>
+          <div className="col-6 d-flex justify-content-end pb-lg-4 pe-5 pb-md-3 pb-2">
+            <div className="btn-lg-form btn-md-form btn-form">＊Gmail：</div>
           </div>
           <div className="col-6">
             <input
               type="email"
               onChange={handleEmail}
-              className="btn btn-light btn-lg position-absolute col-4 "
-              // className="form-control"
-              style={{
-                color: "black",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-                top: "54%",
-                left: "50%",
-                width: "15rem",
-              }}
+              className="btn btn-light btn-lg d-flex input-md-form input-form"
+              // placeholder="gmail"
               required
             />
           </div>
+          <div className="col-12 d-flex justify-content-center">
+            <button
+              className="btn-form btn-get-lg-form btn-get-md-form btn-get-form"
+              onClick={handleLogin}
+            >
+              確認取票
+            </button>
+          </div>
         </div>
       </div>
-
-      <button
-        className="btn position-absolute "
-        onClick={handleLogin}
-        style={{
-          color: "black",
-          backgroundColor: "lightgray",
-          fontSize: "1.1rem",
-          fontWeight: "bold",
-          top: "62%",
-          left: "43%",
-          width: "10rem",
-        }}
-      >
-        確認取票
-      </button>
-
-      {/* 按鈕放在圖片下方 */}
     </div>
   );
 }

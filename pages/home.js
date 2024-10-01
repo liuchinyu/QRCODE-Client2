@@ -8,7 +8,7 @@ export default function Home() {
 
   const handleLogin = async (e) => {
     router.push({
-      pathname: "/identify",
+      pathname: "/company",
     });
   };
 
@@ -17,17 +17,10 @@ export default function Home() {
       <div className="background"></div>
       <div className="content">
         <button
-          className="btn btn-lg"
+          className="btn-entrance btn-md-entrance btn-lg-entrance"
           onClick={handleLogin}
-          style={{
-            fontSize: "1.5rem",
-            width: "10rem",
-            fontWeight: "bold",
-            color: "red",
-            backgroundColor: "lightgray",
-          }}
         >
-          線上取票
+          線上取票入口
         </button>
       </div>
     </div>

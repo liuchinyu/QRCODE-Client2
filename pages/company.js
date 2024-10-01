@@ -22,7 +22,6 @@ export default function company() {
     let result = await axios.post("http://localhost:8080/api/user/login", {
       password,
     });
-    console.log("result11", result);
     if (result.data.length > 0) {
       // router.push("/newForm");
       alert("登入成功跳轉表單");
@@ -32,79 +31,32 @@ export default function company() {
       });
     } else {
       //查無資料
-      console.log("result", result);
       alert("識別碼輸入錯誤，請重新輸入");
     }
   };
 
   return (
-    <div className="container mt-4">
-      <div className="position-relative text-center">
-        {/* 圖片 */}
-        <Image
-          src="/identify.png" // 確保圖片路徑正確，放在 public 資料夾中
-          alt="Example Image"
-          width={600}
-          height={300}
-          className="img-fluid"
-          style={{ width: "80vw", height: "auto" }}
-        />
-        <div
-          className="position-absolute start-50 translate-middle-x"
-          style={{
-            color: "red",
-            fontSize: "1.3rem",
-            fontWeight: "bold",
-            top: "25%",
-          }}
-        >
+    <div className="container vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
+      <div className="background-ticket"></div>
+      <div className="content d-flex flex-wrap justify-content-center">
+        <div className="inform-lg inform-md inform">
           請輸入取票識別碼進行線上取票
         </div>
-        <button
-          className="btn btn-lg position-absolute  "
-          style={{
-            backgroundColor: "lightgray",
-            color: "black",
-            fontSize: "1.3rem",
-            fontWeight: "bold",
-            top: "35%",
-            left: "33%",
-          }}
-        >
-          取票識別碼
-        </button>
+        <button className="btn-ticket btn-md-ticket">取票識別碼</button>
         <input
           type="text"
           onChange={handelUserName}
           name="username"
           id="username"
-          className="form-control position-absolute"
-          style={{
-            color: "black",
-            fontSize: "1.4rem",
-            fontWeight: "bold",
-            width: "15rem",
-            top: "35%",
-            left: "45%",
-          }}
+          className="form-control form-md-control"
         />
+        <button
+          className="btn-lg-get-ticket btn-md-get-ticket btn-get-ticket"
+          onClick={handleLogin}
+        >
+          領取票券
+        </button>
       </div>
-      <button
-        className="btn btn-lg position-absolute "
-        onClick={handleLogin}
-        style={{
-          color: "black",
-          backgroundColor: "lightgray",
-          fontSize: "1.3rem",
-          fontWeight: "bold",
-          top: "50%",
-          left: "45%",
-        }}
-      >
-        領取票券
-      </button>
-
-      {/* 按鈕放在圖片下方 */}
     </div>
   );
 }

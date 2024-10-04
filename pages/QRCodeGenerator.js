@@ -97,55 +97,38 @@ const QRCodePage = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <div className="position-relative text-center">
-        {/* 圖片 */}
-        <Image
-          src="/identify.png" // 確保圖片路徑正確，放在 public 資料夾中
-          alt="QRCODE"
-          width={600}
-          height={300}
-          className="img-fluid"
-          style={{ width: "80vw", height: "auto" }}
-        />
-      </div>
-      <div className="row">
-        <div className="col">
-          <div
-            className="position-absolute start-50 translate-middle-x"
-            style={{
-              color: "red",
-              fontSize: "1.3rem",
-              fontWeight: "bold",
-              top: "15%",
-              textAlign: "center",
-              width: "100%",
-            }}
-          >
+    <div className="vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
+      <div className="background-ticket-2">
+        <div className="d-flex justify-content-center">
+          <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
             領票成功!
             <br />
-            已將票券發送至 {emails}，請至信箱確認。
+            已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
             <br />
-            請妥善保存QRCODE憑證，活動當天將下方QRCODE於驗票口出示，期待您的蒞臨!
+            再請協助將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
+            <br />
+            活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
           </div>
-        </div>
-        <div className="col">
-          <div>
-            {qrCodeUrl && (
-              <img
-                src={qrCodeUrl}
-                className="position-absolute"
-                alt="QR Code"
-                style={{
-                  color: "black",
-                  fontSize: "1.3rem",
-                  fontWeight: "bold",
-                  top: "38%",
-                  left: "44%",
-                  width: "10rem",
-                }}
-              />
-            )}
+          {qrCodeUrl && (
+            <div className="w-75">
+              <div className="test2 d-flex w-75 justify-content-evenly">
+                <p className="test">入場票券QRCODE1</p>
+                <p className="test">入場票券QRCODE1</p>
+              </div>
+              <div className="test3 d-flex w-75 justify-content-evenly">
+                <img src={qrCodeUrl} className="qrcode" alt="QR Code" />
+                <img src={qrCodeUrl} className="qrcode" alt="QR Code" />
+              </div>
+            </div>
+          )}
+          <div className="service-lg service-md service">
+            如有票券取得之相關問題，請隨時與我們聯繫，謝謝
+            <br />
+            客服電話：(02)2792-8788#502
+            <br />
+            客服信箱：xgen.org.tw@gmail.com
+            <br />
+            服務時間：週一到週五 09:00~18:00
           </div>
         </div>
       </div>

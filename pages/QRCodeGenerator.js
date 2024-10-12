@@ -1,3 +1,5 @@
+//--新檔
+
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import QRCode from "qrcode";
@@ -7,16 +9,43 @@ const QRCodePage = () => {
   const [qrCodeUrl, setQRCodeUrl] = useState("");
   const [names, setName] = useState(""); //公司名稱
   const [seat, setSeat] = useState(""); //座位
+  const [company, setCompany] = useState("");
   const [username, setUsername] = useState(""); //領票人姓名
   const [emails, setEmail] = useState(""); //領票信箱
   const [numbers, setNumber] = useState(""); //領票張數
+  const [ticketNum, setTicket] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
 
   const router = useRouter();
   let textToEncode = "";
+
+  useEffect(() => {
+    setCurrentUser(JSON.parse(localStorage.getItem("user")));
+    // console.log("currentUser", JSON.parse(localStorage.getItem("user")).token); //有成功get到item
+  }, []);
+
+  //回到身分判斷頁面
+  const backToLogin = () => {
+    router.push({
+      pathname: "/company",
+    });
+  };
+
   const emailSentRef = useRef(false);
-  if (router.query) {
+  if (router.query && router.query.company == "company") {
     textToEncode =
       "活動名稱：接棒未來 揮出夢想\n公司名稱：" +
+      names +
+      "\n領票人姓名：" +
+      username +
+      "\n座位區域：" +
+      seat +
+      "區\n" +
+      "取票數量：" +
+      numbers;
+  } else if (router.query && router.query.company == "person") {
+    textToEncode =
+      "活動名稱：接棒未來 揮出夢想\n捐贈人名稱：" +
       names +
       "\n領票人姓名：" +
       username +
@@ -29,44 +58,70 @@ const QRCodePage = () => {
   //儲存拋轉資料
   useEffect(() => {
     if (router.isReady && router.query) {
+      setCompany(router.query.company);
       setName(router.query.names);
       setSeat(router.query.seat);
       setUsername(router.query.username);
       setEmail(router.query.emails);
-      setNumber(router.query.numbers);
+      setNumber(Number(router.query.numbers));
     }
   }, [router.query]);
 
-  useEffect(
-    () => {
-      if (textToEncode.trim() && names) {
-        QRCode.toDataURL(
-          textToEncode,
-          {
-            width: 256,
-            margin: 2,
-          },
-          (err, url) => {
-            if (err) {
-              console.error(err);
-              return;
-            }
-            setQRCodeUrl(url);
+  useEffect(() => {
+    async function fetchDataAndGenerateQR() {
+      // 获取 ticket-id
+      const response = await fetch(
+        "http://localhost:8080/api/user/get-ticket-id"
+      );
+      const data = await response.json();
+      const numericData = Number(data);
+      // console.log("------numericData", typeof numericData);
+      setTicket(numericData);
+      // console.log("------", typeof ticketNum);
 
-            // 檢查 email 是否已經發送過，確保只發送一次
-            if (!emailSentRef.current) {
-              sendEmailWithQRCode(url);
-              emailSentRef.current = true; // 標記為已發送
-            }
+      // 生成 QR 码并发送邮件
+      if (textToEncode.trim() && names && numbers && data) {
+        const qrPromises = Array.from(
+          { length: parseInt(numbers) },
+          (_, index) => {
+            const individualText = `${textToEncode}\n票券號碼：${
+              "XGEN" + (numericData + index + 1)
+            }`;
+            return new Promise((resolve, reject) => {
+              QRCode.toDataURL(
+                individualText,
+                {
+                  width: 256,
+                  margin: 2,
+                },
+                (err, url) => {
+                  if (err) reject(err);
+                  else resolve(url);
+                }
+              );
+            });
           }
         );
-      }
-    },
-    [textToEncode],
-    names
-  );
 
-  const sendEmailWithQRCode = async (qrCodeUrl) => {
+        Promise.all(qrPromises)
+          .then((urls) => {
+            setQRCodeUrl(urls);
+            if (!emailSentRef.current) {
+              sendEmailWithQRCode(urls, data);
+              emailSentRef.current = true;
+            }
+          })
+          .catch((err) => console.error(err));
+      }
+    }
+
+    if (router.isReady && router.query) {
+      fetchDataAndGenerateQR();
+    }
+  }, [router.isReady, router.query, textToEncode, names, numbers]);
+
+  const sendEmailWithQRCode = async (qrCodeUrl, ticketNum) => {
+    ticketNum = Number(ticketNum);
     try {
       const response = await fetch(
         "http://localhost:8080/api/user/user-send-email",
@@ -77,62 +132,84 @@ const QRCodePage = () => {
           },
           body: JSON.stringify({
             qrCodeUrl,
+            company,
             names,
             seat,
             username,
             numbers,
             emails,
+            ticketNum,
           }),
         }
       );
 
       if (response.ok) {
-        console.log("Email sent successfully");
+        localStorage.removeItem("user");
       } else {
-        console.error("Failed to send emails");
+        console.error("邮件发送失败");
       }
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error("发送邮件时出错:", error);
     }
   };
 
   return (
-    <div className="vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
-      <div className="background-ticket-2">
-        <div className="d-flex justify-content-center">
-          <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
-            領票成功!
-            <br />
-            已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
-            <br />
-            再請協助將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
-            <br />
-            活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
-          </div>
-          {qrCodeUrl && (
-            <div className="w-75">
-              <div className="test2 d-flex w-75 justify-content-evenly">
-                <p className="test">入場票券QRCODE1</p>
-                <p className="test">入場票券QRCODE1</p>
+    <>
+      {!currentUser && (
+        <div>
+          <p>您必須先進行身分驗證</p>
+          <button
+            className="btn btn-primary btn-lh backToLogin"
+            onClick={backToLogin}
+            // onClick={handelTakeToLogin}
+          >
+            回到身分驗證頁面
+          </button>
+        </div>
+      )}
+
+      {currentUser && (
+        <div className="vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
+          <div className="background-ticket-2">
+            <div className="d-flex flex-column align-items-center">
+              <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
+                領票成功!
+                <br />
+                已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
+                <br />
+                再請協助將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
+                <br />
+                活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
               </div>
-              <div className="test3 d-flex w-75 justify-content-evenly">
-                <img src={qrCodeUrl} className="qrcode" alt="QR Code" />
-                <img src={qrCodeUrl} className="qrcode" alt="QR Code" />
+              {qrCodeUrl.length > 0 && (
+                <div className="qr-codes-container d-flex justify-content-center flex-wrap">
+                  {qrCodeUrl.map((url, index) => (
+                    <div key={index} className="qr-code-item text-center my-3">
+                      <p className="qr-code-title mb-2">入場券{index + 1}</p>
+                      <img
+                        src={url}
+                        className="qrcode pe-3"
+                        alt={`QR Code ${index + 1}`}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="service-lg service-md service mt-4">
+                如有票券取得之相關問題，請隨時與我們聯繫，謝謝
+                <br />
+                客服電話：(02)2792-8788#502
+                <br />
+                客服信箱：xgen.org.tw@gmail.com
+                <br />
+                服務時間：週一到週五 09:00~18:00
               </div>
             </div>
-          )}
-          <div className="service-lg service-md service">
-            如有票券取得之相關問題，請隨時與我們聯繫，謝謝
-            <br />
-            客服電話：(02)2792-8788#502
-            <br />
-            客服信箱：xgen.org.tw@gmail.com
-            <br />
-            服務時間：週一到週五 09:00~18:00
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

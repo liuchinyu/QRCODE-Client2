@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 
-// import styles from "@/styles/Home.module.css";
+import axios from "axios";
 
 export default function company() {
   const [username, setUsername] = useState("");
@@ -19,19 +18,25 @@ export default function company() {
   // 判斷輸入的驗證碼是否存在
   const handleLogin = async (e) => {
     let password = username;
-    let result = await axios.post("http://localhost:8080/api/user/login", {
-      password,
-    });
-    if (result.data.length > 0) {
-      // router.push("/newForm");
-      alert("登入成功跳轉表單");
-      router.push({
-        pathname: "/newForm",
-        query: { userData: JSON.stringify(result.data), password },
+    try {
+      let result = await axios.post("http://localhost:8080/api/user/login", {
+        password,
       });
-    } else {
-      //查無資料
-      alert("識別碼輸入錯誤，請重新輸入");
+      // result會有jwt token
+      // console.log("result", result.data);
+      if (result.data.data.length > 0) {
+        localStorage.setItem("user", JSON.stringify(result.data));
+        alert("登入成功跳轉表單");
+        router.push({
+          pathname: "/newForm",
+          query: { userData: JSON.stringify(result.data.data), password },
+        });
+      } else {
+        //查無資料
+        alert("識別碼輸入錯誤，請重新輸入");
+      }
+    } catch (e) {
+      alert("登入失敗，請稍後再試");
     }
   };
 

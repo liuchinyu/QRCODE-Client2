@@ -157,11 +157,10 @@
   top: 7rem;
 }
 .qrcode {
-  /* color: black; */
-  /* font-size: 1.2rem; */
   font-weight: bold;
   width: 10vw;
-  /* padding-top: 30px; */
+  min-width: 80px;
+  /* flex: 1 0; */
 }
 .service {
   color: #2f5597;
@@ -175,9 +174,6 @@
   border: 3px solid black;
 }
 .test2 {
-  /* width: 1000px; */
-  /* max-width: 1000px; */
-  /* border: 3px solid yellow; */
   position: absolute;
   top: 10rem;
 }
@@ -189,9 +185,45 @@
 
 .border {
   border: 3px solid red;
-  height: 300px;
+  /* height: 300px; */
+  /* position: absolute;
+  top: 10rem; */
 }
 
+.qr-codes-container {
+  max-width: 100%;
+  overflow-x: auto;
+  position: absolute;
+  top: 10rem;
+}
+
+.qr-code-item {
+  flex: 0 0 auto;
+  width: 120px;
+  overflow-x: hidden;
+}
+
+.qr-code-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* .qrcode {
+  max-width: 100%;
+  height: auto;
+} */
+
+/* @media (max-width: 768px) {
+  .qr-codes-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .qr-code-item {
+    width: 100%;
+    max-width: 200px;
+  }
+} */
 /* 響應式設定 */
 
 /* sm */

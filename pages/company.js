@@ -22,10 +22,9 @@ export default function company() {
       let result = await axios.post("http://localhost:8080/api/user/login", {
         password,
       });
-      // result會有jwt token
-      // console.log("result", result.data);
-      if (result.data.data.length > 0) {
-        localStorage.setItem("user", JSON.stringify(result.data));
+
+      if (result.data.data) {
+        localStorage.setItem("user", JSON.stringify(result.data.token));
         alert("登入成功跳轉表單");
         router.push({
           pathname: "/newForm",

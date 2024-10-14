@@ -23,7 +23,6 @@ export default function newForm() {
   //判斷是否有登入過
   useEffect(() => {
     setCurrentUser(JSON.parse(localStorage.getItem("user")));
-    // console.log("currentUser", JSON.parse(localStorage.getItem("user")).token); //有成功get到item
   }, []);
 
   useEffect(() => {
@@ -31,15 +30,16 @@ export default function newForm() {
       // 接收並解析資料
       setUserData(JSON.parse(router.query.userData));
       setPassword(router.query.password);
+      let test_data = JSON.parse(router.query.userData);
     }
   }, [router.query, router.query.ticket]);
 
   useEffect(() => {
     if (userData) {
-      setName(userData[1]);
-      setSeat(userData[4]);
-      setTicket(userData[3]);
-      setCompany(userData[0]);
+      setName(userData.name);
+      setSeat(userData.seat);
+      setTicket(userData.ticket_rest);
+      setCompany(userData.type);
     }
   }, [userData]);
 
@@ -88,7 +88,6 @@ export default function newForm() {
     }
     setMessage(errorMessage);
     if (errorMessage.length == 0) {
-      // console.log("正是階段....", currentUser.token);
       let result = await axios.post(
         "http://localhost:8080/api/user/update_data",
         {
@@ -97,7 +96,7 @@ export default function newForm() {
         },
         {
           headers: {
-            Authorization: currentUser.token,
+            Authorization: currentUser,
           },
         }
       );
@@ -119,7 +118,6 @@ export default function newForm() {
           <button
             className="btn btn-primary btn-lh backToLogin"
             onClick={backToLogin}
-            // onClick={handelTakeToLogin}
           >
             回到身分驗證頁面
           </button>

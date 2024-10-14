@@ -1,5 +1,4 @@
 //--新檔
-
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import QRCode from "qrcode";
@@ -21,7 +20,6 @@ const QRCodePage = () => {
 
   useEffect(() => {
     setCurrentUser(JSON.parse(localStorage.getItem("user")));
-    // console.log("currentUser", JSON.parse(localStorage.getItem("user")).token); //有成功get到item
   }, []);
 
   //回到身分判斷頁面
@@ -32,7 +30,10 @@ const QRCodePage = () => {
   };
 
   const emailSentRef = useRef(false);
+  console.log("router.query", router.query);
   if (router.query && router.query.company == "company") {
+    console.log("router.query", router.query);
+
     textToEncode =
       "活動名稱：接棒未來 揮出夢想\n公司名稱：" +
       names +
@@ -58,6 +59,7 @@ const QRCodePage = () => {
   //儲存拋轉資料
   useEffect(() => {
     if (router.isReady && router.query) {
+      console.log("router.query...2", router.query);
       setCompany(router.query.company);
       setName(router.query.names);
       setSeat(router.query.seat);
@@ -69,17 +71,15 @@ const QRCodePage = () => {
 
   useEffect(() => {
     async function fetchDataAndGenerateQR() {
-      // 获取 ticket-id
       const response = await fetch(
         "http://localhost:8080/api/user/get-ticket-id"
       );
       const data = await response.json();
+      console.log("data....", data);
       const numericData = Number(data);
-      // console.log("------numericData", typeof numericData);
       setTicket(numericData);
-      // console.log("------", typeof ticketNum);
 
-      // 生成 QR 码并发送邮件
+      // 生成 QRCODE並發送郵件
       if (textToEncode.trim() && names && numbers && data) {
         const qrPromises = Array.from(
           { length: parseInt(numbers) },
@@ -146,10 +146,10 @@ const QRCodePage = () => {
       if (response.ok) {
         localStorage.removeItem("user");
       } else {
-        console.error("邮件发送失败");
+        console.error("郵件發送失敗");
       }
     } catch (error) {
-      console.error("发送邮件时出错:", error);
+      console.error("Server連接失敗", error);
     }
   };
 
@@ -161,7 +161,6 @@ const QRCodePage = () => {
           <button
             className="btn btn-primary btn-lh backToLogin"
             onClick={backToLogin}
-            // onClick={handelTakeToLogin}
           >
             回到身分驗證頁面
           </button>

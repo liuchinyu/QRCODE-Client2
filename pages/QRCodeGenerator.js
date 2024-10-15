@@ -173,7 +173,7 @@ const QRCodePage = () => {
         </div>
       )}
 
-      {(currentUser || !currentUser) && (
+      {currentUser && (
         <div className="vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
           <div className="background-ticket-2">
             <div className="d-flex flex-column align-items-center">

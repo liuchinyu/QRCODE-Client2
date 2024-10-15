@@ -11,7 +11,8 @@ const QRCodePage = () => {
   const [company, setCompany] = useState("");
   const [username, setUsername] = useState(""); //領票人姓名
   const [emails, setEmail] = useState(""); //領票信箱
-  const [numbers, setNumber] = useState(""); //領票張數
+  const [numbers, setNumber] = useState(""); //大人領票張數
+  const [kidNumbers, setKidNumber] = useState(""); //小孩人數
   const [ticketNum, setTicket] = useState("");
   const [currentUser, setCurrentUser] = useState("");
 
@@ -39,22 +40,26 @@ const QRCodePage = () => {
       names +
       "\n領票人姓名：" +
       username +
+      "\n大人人數：" +
+      numbers +
+      "\n孩童人數：" +
+      kidNumbers +
       "\n座位區域：" +
       seat +
-      "區\n" +
-      "取票數量：" +
-      numbers;
+      "區";
   } else if (router.query && router.query.company == "person") {
     textToEncode =
       "活動名稱：接棒未來 揮出夢想\n捐贈人名稱：" +
       names +
       "\n領票人姓名：" +
       username +
+      "\n大人人數：" +
+      numbers +
+      "\n孩童人數：" +
+      kidNumbers +
       "\n座位區域：" +
       seat +
-      "區\n" +
-      "取票數量：" +
-      numbers;
+      "區";
   }
   //儲存拋轉資料
   useEffect(() => {
@@ -66,6 +71,7 @@ const QRCodePage = () => {
       setUsername(router.query.username);
       setEmail(router.query.emails);
       setNumber(Number(router.query.numbers));
+      setKidNumber(Number(router.query.kidNumbers));
     }
   }, [router.query]);
 
@@ -75,7 +81,6 @@ const QRCodePage = () => {
         "http://localhost:8080/api/user/get-ticket-id"
       );
       const data = await response.json();
-      console.log("data....", data);
       const numericData = Number(data);
       setTicket(numericData);
 
@@ -137,6 +142,7 @@ const QRCodePage = () => {
             seat,
             username,
             numbers,
+            kidNumbers,
             emails,
             ticketNum,
           }),
@@ -167,24 +173,42 @@ const QRCodePage = () => {
         </div>
       )}
 
-      {currentUser && (
+      {(currentUser || !currentUser) && (
         <div className="vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
           <div className="background-ticket-2">
             <div className="d-flex flex-column align-items-center">
-              <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
-                領票成功!
-                <br />
-                已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
-                <br />
-                再請協助將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
-                <br />
-                活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
-              </div>
+              {numbers == 1 && (
+                <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
+                  領票成功!已領取{numbers}張入場電子票券！
+                  <br />
+                  已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
+                  <br />
+                  活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
+                  <br />
+                  *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
+                </div>
+              )}
+              {numbers > 1 && (
+                <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
+                  領票成功!已領取{numbers}張入場電子票券！
+                  <br />
+                  已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
+                  <br />
+                  請將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
+                  <br />
+                  活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
+                  <br />
+                  *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
+                </div>
+              )}
+
               {qrCodeUrl.length > 0 && (
-                <div className="qr-codes-container d-flex justify-content-center flex-wrap">
+                <div className="qr-codes-container qr-codes-md-container d-flex justify-content-center flex-wrap">
                   {qrCodeUrl.map((url, index) => (
                     <div key={index} className="qr-code-item text-center my-3">
-                      <p className="qr-code-title mb-2">入場券{index + 1}</p>
+                      <p className="qr-code-title qr-code-md-title mb-2">
+                        入場票券QROCDE{index + 1}
+                      </p>
                       <img
                         src={url}
                         className="qrcode pe-3"

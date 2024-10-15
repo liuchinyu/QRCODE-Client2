@@ -17,7 +17,8 @@ export default function newForm() {
 
   const [username, setUsername] = useState(""); //領票人
   const [emails, setEmail] = useState(""); //領票信箱
-  const [numbers, setNumber] = useState(""); //領票張數
+  const [numbers, setNumber] = useState(""); //大人領票張數
+  const [kidNumbers, setKidNumber] = useState(""); //小孩人數
   const [currentUser, setCurrentUser] = useState("");
 
   //判斷是否有登入過
@@ -46,6 +47,9 @@ export default function newForm() {
   const handelNumber = (e) => {
     setNumber(e.target.value);
   };
+  const handelKidNumber = (e) => {
+    setKidNumber(e.target.value);
+  };
 
   const handelUserName = (e) => {
     setUsername(e.target.value);
@@ -70,6 +74,9 @@ export default function newForm() {
 
     if (!numbers) {
       errorMessage += "請輸入領取票券\n";
+    }
+    if (!kidNumbers) {
+      errorMessage += "請輸入12歲以下孩童人數，若不攜帶孩童請輸入0\n";
     }
     if (!username) {
       errorMessage += "請輸入領票人姓名\n";
@@ -103,7 +110,7 @@ export default function newForm() {
 
       router.push({
         pathname: "/QRCodeGenerator",
-        query: { company, names, seat, username, numbers, emails },
+        query: { company, names, seat, username, numbers, kidNumbers, emails },
       });
     } else {
       alert(errorMessage);
@@ -124,13 +131,16 @@ export default function newForm() {
         </div>
       )}
       {currentUser && (
-        <div className="container vh-90 position-relative d-flex justify-content-center align-items-center mt-4 overflow-hidden ">
+        <div className="container md-container vh-90 position-relative d-flex justify-content-center align-items-center mt-4 overflow-hidden ">
           <div className="background-ticket-2"></div>
           <div className="content-form d-flex flex-wrap justify-content-center">
             <div className="row">
               <div className="col-12 d-flex justify-content-center">
                 <h2 className="inform-lg-newForm inform-md-newForm inform-newForm">
-                  ＊＊請確認出席人數再進行取票，每張電子票券僅限１人使用
+                  ＊＊請確認當天出席人數再進行取票，每張入場電子票券僅限１位大人使用
+                </h2>
+                <h2 className="inform-lg-newForm-2 inform-md-newForm-2 inform-newForm-2">
+                  ＊＊12歲以下的孩童可免費入場，請確實填寫人數以利安排座位
                 </h2>
               </div>
               <div className="col-12 pb-lg-0 pb-md-2 pb-4">
@@ -139,24 +149,7 @@ export default function newForm() {
                 </h1>
               </div>
 
-              <div className="col-6 d-flex justify-content-end pb-lg-4 pe-5 pb-md-3 pb-2">
-                <div className="btn-lg-form btn-md-form btn-form">
-                  ＊需領取的數量：
-                </div>
-              </div>
-              <div className="col-6">
-                <input
-                  type="number"
-                  onChange={handelNumber}
-                  className="btn btn-light btn-lg d-flex input-md-form input-form"
-                  name="number"
-                  id="number"
-                  min="0"
-                  // placeholder="請輸入要領取的張數"
-                  required
-                />
-              </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-4 pe-5 pb-md-3 pb-2">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊領票人姓名：
                 </div>
@@ -165,28 +158,80 @@ export default function newForm() {
                 <input
                   type="text"
                   onChange={handelUserName}
-                  className="btn btn-light btn-lg d-flex input-md-form input-form"
-                  // className="form-control"
+                  className="btn btn-light btn-lg d-flex input-md-form input-form "
                   name="username"
                   id="username"
-                  // placeholder="輸入姓名"
+                  placeholder="輸入姓名"
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-4 pe-5 pb-md-3 pb-2">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
                 <div className="btn-lg-form btn-md-form btn-form">
-                  ＊Gmail：
+                  ＊Email：
                 </div>
               </div>
               <div className="col-6">
                 <input
                   type="email"
                   onChange={handleEmail}
-                  className="btn btn-light btn-lg d-flex input-md-form input-form"
-                  // placeholder="gmail"
+                  className="btn btn-light btn-lg d-flex input-md-form input-form "
+                  placeholder="email"
                   required
                 />
               </div>
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
+                <div className="btn-lg-form btn-md-form btn-form">
+                  ＊大人的人數：
+                </div>
+              </div>
+              <div className="col-6">
+                <input
+                  type="number"
+                  onChange={handelNumber}
+                  className="btn btn-light btn-lg d-flex input-md-form input-form "
+                  name="number"
+                  id="number"
+                  min="0"
+                  placeholder="請輸入要領取的張數"
+                  required
+                />
+              </div>
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
+                <div className="btn-lg-form btn-md-form btn-form">
+                  ＊12歲以下孩童的人數：
+                </div>
+              </div>
+              <div className="col-6">
+                <input
+                  type="number"
+                  onChange={handelKidNumber}
+                  className="btn btn-light btn-lg d-flex input-md-form input-form"
+                  name="number"
+                  id="number"
+                  min="0"
+                  placeholder="若不攜帶孩童請填寫０"
+                  required
+                />
+              </div>
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2 ">
+                <div className="btn-lg-form btn-md-form btn-form">
+                  ＊可領取的入場電子票券數量：
+                </div>
+              </div>
+              <div className="col-6">
+                <input
+                  type="text"
+                  onChange={handelNumber}
+                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
+                  name="number"
+                  id="number"
+                  value={ticket}
+                  min="0"
+                  readOnly
+                  required
+                />
+              </div>
+
               <div className="col-12 d-flex justify-content-center">
                 <button
                   className="btn-form btn-get-lg-form btn-get-md-form btn-get-form"

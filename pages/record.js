@@ -28,12 +28,12 @@ export default function record() {
             <thead>
               <tr className="text-center">
                 <th className="col-1">領票日期(年/月/日)</th>
-                <th className="col-1">捐款人名稱</th>
-                <th className="col-1">領票人姓名</th>
-                <th className="col-1">大人人數</th>
-                <th className="col-1">孩童人數</th>
+                <th className="col-2">捐款人名稱</th>
+                <th className="col-2">領票人姓名</th>
+                <th className="col-2">大人人數</th>
+                <th className="col-2">孩童人數</th>
                 <th className="col-2">領取入場電子票券的張數</th>
-                <th className="col-1">座位區域</th>
+                <th className="col-3">座位</th>
                 <th>Gmail</th>
                 <th>票券號碼</th>
                 <th>QRCODE連結</th>
@@ -49,7 +49,7 @@ export default function record() {
                   <td>{record.ticket_kid}</td>
                   <td>{record.ticket_count}</td>
                   <td>{record.seat}</td>
-                  <td>{record.email}</td>
+                  <td className="mx-w1">{record.email}</td>
                   <td>XGEN{record.ticket_id}</td>
                   <td className="mx-w1">{record.url}</td>
                 </tr>

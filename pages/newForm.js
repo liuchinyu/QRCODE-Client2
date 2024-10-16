@@ -121,7 +121,7 @@ export default function newForm() {
     <>
       {!currentUser && (
         <div>
-          <p>您必須先進行身分驗證</p>
+          <p>您必須先進行身份驗證</p>
           <button
             className="btn btn-primary btn-lh backToLogin"
             onClick={backToLogin}
@@ -131,7 +131,7 @@ export default function newForm() {
         </div>
       )}
       {currentUser && (
-        <div className="container md-container vh-90 position-relative d-flex justify-content-center align-items-center mt-4 overflow-hidden ">
+        <div className="background-container position-relative d-flex justify-content-center align-items-center overflow-hidden ">
           <div className="background-ticket-2"></div>
           <div className="content-form d-flex flex-wrap justify-content-center">
             <div className="row">
@@ -158,7 +158,7 @@ export default function newForm() {
                 <input
                   type="text"
                   onChange={handelUserName}
-                  className="btn btn-light btn-lg d-flex input-md-form input-form "
+                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
                   name="username"
                   id="username"
                   placeholder="輸入姓名"
@@ -174,7 +174,7 @@ export default function newForm() {
                 <input
                   type="email"
                   onChange={handleEmail}
-                  className="btn btn-light btn-lg d-flex input-md-form input-form "
+                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
                   placeholder="email"
                   required
                 />
@@ -188,7 +188,7 @@ export default function newForm() {
                 <input
                   type="number"
                   onChange={handelNumber}
-                  className="btn btn-light btn-lg d-flex input-md-form input-form "
+                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
                   name="number"
                   id="number"
                   min="0"
@@ -205,7 +205,7 @@ export default function newForm() {
                 <input
                   type="number"
                   onChange={handelKidNumber}
-                  className="btn btn-light btn-lg d-flex input-md-form input-form"
+                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form"
                   name="number"
                   id="number"
                   min="0"
@@ -222,10 +222,10 @@ export default function newForm() {
                 <input
                   type="text"
                   onChange={handelNumber}
-                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
+                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form limit"
                   name="number"
                   id="number"
-                  value={ticket}
+                  value={numbers}
                   min="0"
                   readOnly
                   required

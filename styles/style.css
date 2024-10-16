@@ -3,23 +3,29 @@
   lg   >=992
 */
 /* 背景相關設定 */
+.background-container {
+  /* border: 3px solid gray; */
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.vh-90 {
+  height: 90vh;
+}
+
 .background {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   width: 100%;
   height: 100%;
-  background-image: url("../public/background.png");
+  background-image: url("../public/background-new.png");
   /* background-size: cover; */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* z-index: 1; */
 }
 .background-ticket {
   width: 100%;
   height: 100%;
-  background-image: url("../public/ticket.png");
+  background-image: url("../public/ticket-new.png");
   /* background-size: cover; */
   background-size: contain;
   background-repeat: no-repeat;
@@ -50,10 +56,6 @@
   color: white;
   text-align: center;
   padding: 0rem;
-}
-
-.vh-90 {
-  height: 90vh;
 }
 /* home.js */
 .btn-entrance {
@@ -111,14 +113,16 @@
   color: red;
   font-size: 0.8rem;
   position: absolute;
-  top: -1.75rem;
+  top: -3rem;
+  font-weight: bold;
 }
 
-.inform-md-newForm-2 {
+.inform-newForm-2 {
   color: red;
   font-size: 0.8rem;
   position: absolute;
-  top: -3rem;
+  top: -1.75rem;
+  font-weight: bold;
 }
 
 .company-name {
@@ -153,6 +157,10 @@
   border-radius: 10px;
   border: 2px solid gray;
 }
+.limit {
+  background-color: lightgray;
+}
+
 .btn-get-form {
   position: absolute;
   padding: 3px 2px;
@@ -165,18 +173,20 @@
   font-size: 0.6rem;
   font-weight: bold;
   position: absolute;
-  top: 8.5rem;
+  top: calc(30% - 0.75rem);
 }
 .qrcode {
   font-weight: bold;
-  width: 10vw;
+  width: auto;
+  max-width: 12vw;
   min-width: 80px;
+  /* position: absolute; */
   /* flex: 1 0; */
 }
 .service {
   color: #2f5597;
   position: absolute;
-  top: calc(50% + 1.5rem);
+  top: calc(50% + 1rem);
   font-size: 0.6rem;
   text-align: left;
 }
@@ -205,7 +215,7 @@
   max-width: 100%;
   overflow-x: auto;
   position: absolute;
-  top: 12rem;
+  top: calc(40% - 1.5rem);
 }
 
 .qr-code-item {
@@ -217,9 +227,10 @@
 }
 
 .qr-code-title {
-  font-size: 8px;
+  font-size: 9px;
   font-weight: bold;
-  /* position: absolute; */
+  /* position: absolute;
+  top: -1rem; */
 }
 
 /* record  */
@@ -228,23 +239,6 @@
   overflow-wrap: break-word;
 }
 
-/* .
- {
-  max-width: 100%;
-  height: auto;
-} */
-
-/* @media (max-width: 768px) {
-  .qr-codes-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .qr-code-item {
-    width: 100%;
-    max-width: 200px;
-  }
-} */
 /* 響應式設定 */
 
 /* sm */
@@ -255,7 +249,14 @@
     font-size: 0.7rem;
     font-weight: bold;
     position: absolute;
-    top: 5rem;
+    top: calc(30% - 2.15rem);
+  }
+  .service-sm {
+    color: #2f5597;
+    position: absolute;
+    top: calc(50% + 2rem);
+    font-size: 0.6rem;
+    text-align: left;
   }
 }
 
@@ -315,13 +316,14 @@
     color: red;
     font-size: 1.15rem;
     position: absolute;
-    top: -5rem;
+    top: -6.5rem;
   }
+
   .inform-md-newForm-2 {
     color: red;
     font-size: 1.15rem;
     position: absolute;
-    top: -6.5rem;
+    top: -5rem;
   }
 
   .company-name-md {
@@ -372,7 +374,7 @@
     font-weight: bold;
     width: 15rem;
     border-radius: 10px;
-
+    padding: 7px;
     /* padding: 9px; */
   }
   /* QRCODE */
@@ -381,12 +383,12 @@
     font-size: 0.9rem;
     font-weight: bold;
     position: absolute;
-    top: 2rem;
+    top: calc(20% - 1.15rem);
   }
   .service-md {
     color: #2f5597;
     position: absolute;
-    top: 20rem;
+    top: calc(75% - 5rem);
     font-size: 0.8rem;
     text-align: left;
   }
@@ -394,7 +396,7 @@
     max-width: 100%;
     overflow-x: auto;
     position: absolute;
-    top: 10rem;
+    top: 12.5rem;
   }
   .qr-code-md-title {
     font-size: 12px;
@@ -443,6 +445,7 @@
     font-weight: bold;
     width: 15rem;
     border-radius: 10px;
+    /* padding: 8px; */
   }
 
   .inform-lg-newForm {
@@ -493,12 +496,12 @@
     font-size: 1.2rem;
     font-weight: bold;
     position: absolute;
-    top: 0;
+    top: 1.5rem;
   }
   .service-lg {
     color: #2f5597;
     position: absolute;
-    top: 21.5rem;
+    /* top: calc(75% - 3rem); */
     font-size: 1rem;
     text-align: left;
   }

@@ -31,10 +31,7 @@ const QRCodePage = () => {
   };
 
   const emailSentRef = useRef(false);
-  console.log("router.query", router.query);
   if (router.query && router.query.company == "company") {
-    console.log("router.query", router.query);
-
     textToEncode =
       "活動名稱：接棒未來 揮出夢想\n公司名稱：" +
       names +
@@ -64,7 +61,6 @@ const QRCodePage = () => {
   //儲存拋轉資料
   useEffect(() => {
     if (router.isReady && router.query) {
-      console.log("router.query...2", router.query);
       setCompany(router.query.company);
       setName(router.query.names);
       setSeat(router.query.seat);
@@ -163,7 +159,7 @@ const QRCodePage = () => {
     <>
       {!currentUser && (
         <div>
-          <p>您必須先進行身分驗證</p>
+          <p>您必須先進行身份驗證</p>
           <button
             className="btn btn-primary btn-lh backToLogin"
             onClick={backToLogin}
@@ -174,7 +170,7 @@ const QRCodePage = () => {
       )}
 
       {currentUser && (
-        <div className="vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
+        <div className="background-container position-relative d-flex justify-content-center align-items-center">
           <div className="background-ticket-2">
             <div className="d-flex flex-column align-items-center">
               {numbers == 1 && (
@@ -205,7 +201,10 @@ const QRCodePage = () => {
               {qrCodeUrl.length > 0 && (
                 <div className="qr-codes-container qr-codes-md-container d-flex justify-content-center flex-wrap">
                   {qrCodeUrl.map((url, index) => (
-                    <div key={index} className="qr-code-item text-center my-3">
+                    <div
+                      key={index}
+                      className="position-relative qr-code-item text-center my-4 "
+                    >
                       <p className="qr-code-title qr-code-md-title mb-2">
                         入場票券QROCDE{index + 1}
                       </p>
@@ -219,7 +218,7 @@ const QRCodePage = () => {
                 </div>
               )}
 
-              <div className="service-lg service-md service mt-4">
+              <div className="service-lg service-md service-sm service mt-4">
                 如有票券取得之相關問題，請隨時與我們聯繫，謝謝
                 <br />
                 客服電話：(02)2792-8788#502

@@ -40,7 +40,7 @@ export default function company() {
   };
 
   return (
-    <div className="container vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
+    <div className="background-container position-relative d-flex justify-content-center align-items-center">
       <div className="background-ticket"></div>
       <div className="content d-flex flex-wrap justify-content-center">
         <div className="inform-lg inform-md inform">

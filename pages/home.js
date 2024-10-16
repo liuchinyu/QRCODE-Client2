@@ -1,5 +1,4 @@
 // pages/test.js
-import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/router";
 
@@ -13,8 +12,9 @@ export default function Home() {
   };
 
   return (
-    <div className="container vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
+    <div className="background-container position-relative d-flex justify-content-center align-items-center">
       <div className="background"></div>
+
       <div className="content">
         <button
           className="btn-entrance btn-md-entrance btn-lg-entrance"

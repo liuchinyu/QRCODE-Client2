@@ -3,9 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 
-// import styles from "@/styles/Home.module.css";
+import axios from "axios";
 
 export default function company() {
   const [username, setUsername] = useState("");
@@ -19,24 +18,29 @@ export default function company() {
   // 判斷輸入的驗證碼是否存在
   const handleLogin = async (e) => {
     let password = username;
-    let result = await axios.post("http://localhost:8080/api/user/login", {
-      password,
-    });
-    if (result.data.length > 0) {
-      // router.push("/newForm");
-      alert("登入成功跳轉表單");
-      router.push({
-        pathname: "/newForm",
-        query: { userData: JSON.stringify(result.data), password },
+    try {
+      let result = await axios.post("http://localhost:8080/api/user/login", {
+        password,
       });
-    } else {
-      //查無資料
-      alert("識別碼輸入錯誤，請重新輸入");
+
+      if (result.data.data) {
+        localStorage.setItem("user", JSON.stringify(result.data.token));
+        alert("登入成功跳轉表單");
+        router.push({
+          pathname: "/newForm",
+          query: { userData: JSON.stringify(result.data.data), password },
+        });
+      } else {
+        //查無資料
+        alert("識別碼輸入錯誤，請重新輸入");
+      }
+    } catch (e) {
+      alert("登入失敗，請稍後再試");
     }
   };
 
   return (
-    <div className="container vh-90 position-relative d-flex justify-content-center align-items-center mt-4">
+    <div className="background-container position-relative d-flex justify-content-center align-items-center">
       <div className="background-ticket"></div>
       <div className="content d-flex flex-wrap justify-content-center">
         <div className="inform-lg inform-md inform">

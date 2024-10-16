@@ -7,6 +7,19 @@
   min-height: 100vh;
 }
 
+.bgim {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.bgim h1 {
+  position: relative;
+  z-index: 1;
+}
+.container {
+}
+
 .description {
   display: inherit;
   justify-content: inherit;

@@ -3,23 +3,29 @@
   lg   >=992
 */
 /* 背景相關設定 */
+.background-container {
+  /* border: 3px solid gray; */
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.vh-90 {
+  height: 90vh;
+}
+
 .background {
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   width: 100%;
   height: 100%;
-  background-image: url("../public/background.png");
+  background-image: url("../public/background-new.png");
   /* background-size: cover; */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  /* z-index: 1; */
 }
 .background-ticket {
   width: 100%;
   height: 100%;
-  background-image: url("../public/ticket.png");
+  background-image: url("../public/ticket-new.png");
   /* background-size: cover; */
   background-size: contain;
   background-repeat: no-repeat;
@@ -50,10 +56,6 @@
   color: white;
   text-align: center;
   padding: 0rem;
-}
-
-.vh-90 {
-  height: 90vh;
 }
 /* home.js */
 .btn-entrance {
@@ -112,44 +114,152 @@
   font-size: 0.8rem;
   position: absolute;
   top: -3rem;
+  font-weight: bold;
 }
+
+.inform-newForm-2 {
+  color: red;
+  font-size: 0.8rem;
+  position: absolute;
+  top: -1.75rem;
+  font-weight: bold;
+}
+
 .company-name {
   background-color: lightgray;
   color: black;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: bold;
   position: absolute;
-  top: 0%;
+  top: 3%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem;
+  /* width: ; */
 }
 .btn-form {
   color: black;
   background-color: lightgray;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: bold;
-  width: 8rem;
+  width: 10rem;
   border-radius: 10px;
   border: none;
-  padding: 8px;
+  padding: 6px;
 }
 .input-form {
   color: black;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: bold;
-  width: 12rem;
+  width: 10rem;
+  padding: 5px;
   border-radius: 10px;
   border: 2px solid gray;
 }
+.limit {
+  background-color: lightgray;
+}
+
 .btn-get-form {
   position: absolute;
   padding: 3px 2px;
   width: 6rem;
+  top: calc(50% + 5.75rem);
+}
+/* QRCODE */
+.inform-qrcode {
+  color: red;
+  font-size: 0.6rem;
+  font-weight: bold;
+  position: absolute;
+  top: calc(30% - 0.75rem);
+}
+.qrcode {
+  font-weight: bold;
+  width: auto;
+  max-width: 12vw;
+  min-width: 80px;
+  /* position: absolute; */
+  /* flex: 1 0; */
+}
+.service {
+  color: #2f5597;
+  position: absolute;
+  top: calc(50% + 1rem);
+  font-size: 0.6rem;
+  text-align: left;
+}
+.test {
+  color: black;
+  border: 3px solid black;
+}
+.test2 {
+  position: absolute;
+  top: 10rem;
+}
+.test3 {
+  /* border: 3px solid yellow; */
+  position: absolute;
+  top: 13rem;
+}
+
+.border {
+  border: 3px solid red;
+  /* height: 300px; */
+  /* position: absolute;
+  top: 10rem; */
+}
+
+.qr-codes-container {
+  max-width: 100%;
+  overflow-x: auto;
+  position: absolute;
+  top: calc(40% - 1.5rem);
+}
+
+.qr-code-item {
+  flex: 0 0 auto;
+  /* width: 120px; */
+  overflow-x: hidden;
+  /* position: absolute;
+  top: 3rem; */
+}
+
+.qr-code-title {
+  font-size: 9px;
+  font-weight: bold;
+  /* position: absolute;
+  top: -1rem; */
+}
+
+/* record  */
+.mx-w1 {
+  max-width: 150px;
+  overflow-wrap: break-word;
 }
 
 /* 響應式設定 */
+
+/* sm */
+@media (min-width: 576px) {
+  /* QRCODE */
+  .inform-qrcode-sm {
+    color: red;
+    font-size: 0.7rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(30% - 2.15rem);
+  }
+  .service-sm {
+    color: #2f5597;
+    position: absolute;
+    top: calc(50% + 2rem);
+    font-size: 0.6rem;
+    text-align: left;
+  }
+}
+
 /* md */
 @media (min-width: 768px) {
   /* home */
@@ -198,46 +308,100 @@
     top: 13rem;
   }
   /* newform */
+  .md-container {
+    max-width: 875px !important;
+  }
+
   .inform-md-newForm {
+    color: red;
+    font-size: 1.15rem;
+    position: absolute;
+    top: -6.5rem;
+  }
+
+  .inform-md-newForm-2 {
     color: red;
     font-size: 1.15rem;
     position: absolute;
     top: -5rem;
   }
+
   .company-name-md {
     background-color: lightgray;
     color: black;
     font-size: 1.15rem;
     font-weight: bold;
     position: absolute;
-    top: -15%;
+    top: -12%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
     padding: 0.8rem 1.35rem;
   }
+  /* .btn-md-form {
+    color: black;
+    background-color: lightgray;
+    font-size: 0.8rem;
+    font-weight: bold;
+    width: 12.5rem;
+    border-radius: 10px;
+    border: none;
+    padding: 7px;
+  } */
   .btn-md-form {
     color: black;
     background-color: lightgray;
     font-size: 0.9rem;
     font-weight: bold;
-    width: 9rem;
+    width: 16rem;
     border-radius: 10px;
     border: none;
-    padding: 6px;
+    padding: 10px;
+    position: absolute;
+    left: calc(50% - 16rem);
   }
+
   .btn-get-md-form {
     font-size: 1rem;
-    width: 10rem;
-    padding: 12px;
-    top: 10rem;
+    width: 9rem;
+    padding: 10px;
+    top: 15.5rem;
   }
+
   .input-md-form {
     color: black;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     width: 15rem;
     border-radius: 10px;
+    padding: 7px;
+    /* padding: 9px; */
+  }
+  /* QRCODE */
+  .inform-qrcode-md {
+    color: red;
+    font-size: 0.9rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(20% - 1.15rem);
+  }
+  .service-md {
+    color: #2f5597;
+    position: absolute;
+    top: calc(75% - 5rem);
+    font-size: 0.8rem;
+    text-align: left;
+  }
+  .qr-codes-md-container {
+    max-width: 100%;
+    overflow-x: auto;
+    position: absolute;
+    top: 12.5rem;
+  }
+  .qr-code-md-title {
+    font-size: 12px;
+    font-weight: bold;
+    /* position: absolute; */
   }
 }
 
@@ -271,11 +435,30 @@
     position: static;
     padding: 10px 15px;
   }
+  /* newform */
+  .pb-lg-6 {
+    padding-bottom: 3.15rem !important;
+  }
+  .input-lg-form {
+    color: black;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 15rem;
+    border-radius: 10px;
+    /* padding: 8px; */
+  }
+
   .inform-lg-newForm {
     color: red;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     position: absolute;
-    top: -8rem;
+    top: -8.5rem;
+  }
+  .inform-lg-newForm-2 {
+    color: red;
+    font-size: 1.3rem;
+    position: absolute;
+    top: -6.5rem;
   }
   .company-name-lg {
     background-color: lightgray;
@@ -283,7 +466,7 @@
     font-size: 1.4rem;
     font-weight: bold;
     position: absolute;
-    top: -30%;
+    top: -17%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
@@ -292,17 +475,37 @@
   .btn-lg-form {
     color: black;
     background-color: lightgray;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
-    width: 12rem;
+    width: 16rem;
     border-radius: 10px;
     border: none;
-    padding: 8px;
+    padding: 11px;
+    position: absolute;
+    left: calc(50% - 16rem);
   }
   .btn-get-lg-form {
     font-size: 1rem;
     width: 10rem;
     padding: 12px;
-    top: 13rem;
+    top: 17rem;
+  }
+  /* QRCODE */
+  .inform-qrcode-lg {
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 1.5rem;
+  }
+  .service-lg {
+    color: #2f5597;
+    position: absolute;
+    /* top: calc(75% - 3rem); */
+    font-size: 1rem;
+    text-align: left;
+  }
+  .container {
+    max-width: 960px !important;
   }
 }

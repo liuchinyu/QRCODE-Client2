@@ -168,7 +168,7 @@ const QRCodePage = () => {
             className="btn btn-primary btn-lh backToLogin"
             onClick={backToLogin}
           >
-            回到身分驗證頁面
+            回到身份驗證頁面
           </button>
         </div>
       )}

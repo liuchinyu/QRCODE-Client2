@@ -51,7 +51,7 @@ const QRCodePage = () => {
               console.error(err);
               return;
             }
-            setQRCodeUrl(url);
+            setQRCodeUrl(url); //產生QRCODE的Data URL
 
             // 檢查 email 是否已經發送過，確保只發送一次
             if (!emailSentRef.current) {

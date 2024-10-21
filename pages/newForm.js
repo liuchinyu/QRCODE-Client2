@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CustomAlert from "./customAlert";
 
+const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+
 export default function newForm() {
   const router = useRouter();
   const [userData, setUserData] = useState("");
@@ -64,7 +66,7 @@ export default function newForm() {
   //回到身分判斷頁面
   const backToLogin = () => {
     router.push({
-      pathname: "/company",
+      pathname: API_URL + "company",
     });
   };
 
@@ -98,7 +100,7 @@ export default function newForm() {
     setMessage(errorMessage);
     if (errorMessage.length == 0) {
       let result = await axios.post(
-        "http://localhost:8080/api/user/update_data",
+        API_URL + "update_data",
         {
           password,
           ticket_left,
@@ -111,7 +113,7 @@ export default function newForm() {
       );
 
       router.push({
-        pathname: "/QRCodeGenerator",
+        pathname: API_URL + "QRCodeGenerator",
         query: { company, names, seat, username, numbers, kidNumbers, emails },
       });
     } else {

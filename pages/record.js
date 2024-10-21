@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+
 export default function record() {
   const [records, setRecords] = useState("");
 
@@ -8,7 +10,7 @@ export default function record() {
   useEffect(() => {
     async function getRecord() {
       try {
-        let result = await axios.get("http://localhost:8080/api/user/record");
+        let result = await axios.get(API_URL + "record");
         console.log("result.data", result.data);
         let result_arr = result.data;
         result_arr.map((t, index) => console.log(t));

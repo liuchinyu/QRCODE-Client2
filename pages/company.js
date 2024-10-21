@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import CustomAlert from "./customAlert";
 import axios from "axios";
 
+const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+
 export default function company() {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState(""); //錯誤訊息
@@ -22,7 +24,7 @@ export default function company() {
   const handleLogin = async (e) => {
     let password = username;
     try {
-      let result = await axios.post("http://localhost:8080/api/user/login", {
+      let result = await axios.post(API_URL + "login", {
         password,
       });
 
@@ -51,7 +53,7 @@ export default function company() {
     setShowAlert(false);
     if (loginSuccess && loginData) {
       router.push({
-        pathname: "/newForm",
+        pathname: API_URL + "newForm",
         query: loginData,
       });
     }

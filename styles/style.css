@@ -141,9 +141,9 @@
 .btn-form {
   color: black;
   background-color: lightgray;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   font-weight: bold;
-  width: 10rem;
+  width: 8rem;
   border-radius: 10px;
   border: none;
   padding: 6px;
@@ -153,10 +153,15 @@
   font-size: 0.6rem;
   font-weight: bold;
   width: 10rem;
-  padding: 5px;
+  padding: 2.5px;
   border-radius: 10px;
   border: 2px solid gray;
 }
+
+.btn-yellow {
+  background-color: #ffd700 !important;
+}
+
 .limit {
   background-color: lightgray;
 }
@@ -164,8 +169,9 @@
 .btn-get-form {
   position: absolute;
   padding: 3px 2px;
-  width: 6rem;
-  top: calc(50% + 5.75rem);
+  width: 4rem;
+  font-size: 0.55rem;
+  top: calc(50% + 5.5rem);
 }
 /* QRCODE */
 .inform-qrcode {
@@ -314,16 +320,16 @@
 
   .inform-md-newForm {
     color: red;
-    font-size: 1.15rem;
+    font-size: 1rem;
     position: absolute;
-    top: -6.5rem;
+    top: -5.5rem;
   }
 
   .inform-md-newForm-2 {
     color: red;
-    font-size: 1.15rem;
+    font-size: 1rem;
     position: absolute;
-    top: -5rem;
+    top: -4rem;
   }
 
   .company-name-md {
@@ -332,7 +338,7 @@
     font-size: 1.15rem;
     font-weight: bold;
     position: absolute;
-    top: -12%;
+    top: -9%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
@@ -439,6 +445,7 @@
   .pb-lg-6 {
     padding-bottom: 3.15rem !important;
   }
+
   .input-lg-form {
     color: black;
     font-size: 1.1rem;
@@ -507,5 +514,11 @@
   }
   .container {
     max-width: 960px !important;
+  }
+  .qr-codes-lg-container {
+    max-width: 100%;
+    overflow-x: auto;
+    position: absolute;
+    top: 11rem;
   }
 }

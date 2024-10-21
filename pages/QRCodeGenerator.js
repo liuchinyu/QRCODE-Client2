@@ -15,7 +15,6 @@ const QRCodePage = () => {
   const [kidNumbers, setKidNumber] = useState(""); //小孩人數
   const [ticketNum, setTicket] = useState("");
   const [currentUser, setCurrentUser] = useState("");
-
   const router = useRouter();
   let textToEncode = "";
 
@@ -124,31 +123,33 @@ const QRCodePage = () => {
   const sendEmailWithQRCode = async (qrCodeUrl, ticketNum) => {
     ticketNum = Number(ticketNum);
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/user/user-send-email",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            qrCodeUrl,
-            company,
-            names,
-            seat,
-            username,
-            numbers,
-            kidNumbers,
-            emails,
-            ticketNum,
-          }),
-        }
-      );
+      if (currentUser) {
+        const response = await fetch(
+          "http://localhost:8080/api/user/user-send-email",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              qrCodeUrl,
+              company,
+              names,
+              seat,
+              username,
+              numbers,
+              kidNumbers,
+              emails,
+              ticketNum,
+            }),
+          }
+        );
 
-      if (response.ok) {
-        localStorage.removeItem("user");
-      } else {
-        console.error("郵件發送失敗");
+        if (response.ok) {
+          localStorage.removeItem("user");
+        } else {
+          console.error("郵件發送失敗");
+        }
       }
     } catch (error) {
       console.error("Server連接失敗", error);
@@ -199,7 +200,7 @@ const QRCodePage = () => {
               )}
 
               {qrCodeUrl.length > 0 && (
-                <div className="qr-codes-container qr-codes-md-container d-flex justify-content-center flex-wrap">
+                <div className="qr-codes-container qr-codes-lg-container qr-codes-md-container d-flex justify-content-center flex-wrap">
                   {qrCodeUrl.map((url, index) => (
                     <div
                       key={index}

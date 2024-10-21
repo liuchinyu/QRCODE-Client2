@@ -1,9 +1,6 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-
+import CustomAlert from "./customAlert";
 import axios from "axios";
 
 export default function company() {
@@ -11,6 +8,12 @@ export default function company() {
   const [message, setMessage] = useState(""); //錯誤訊息
   const router = useRouter();
 
+  // 儲存訊息動態
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(false);
+  // 設定資料卡控，待按下傳送後才跳轉表單
+  const [loginData, setLoginData] = useState(null);
   const handelUserName = (e) => {
     setUsername(e.target.value);
   };
@@ -25,17 +28,32 @@ export default function company() {
 
       if (result.data.data) {
         localStorage.setItem("user", JSON.stringify(result.data.token));
-        alert("登入成功跳轉表單");
-        router.push({
-          pathname: "/newForm",
-          query: { userData: JSON.stringify(result.data.data), password },
+        setAlertMessage("登入成功跳轉表單");
+        setLoginSuccess(true);
+        setShowAlert(true);
+        setLoginData({
+          userData: JSON.stringify(result.data.data),
+          password: password,
         });
       } else {
         //查無資料
-        alert("識別碼輸入錯誤，請重新輸入");
+        setAlertMessage("識別碼輸入錯誤，請重新輸入");
+        setShowAlert(true);
       }
     } catch (e) {
-      alert("登入失敗，請稍後再試");
+      console.log(e);
+      console.log("E.message", e.message);
+      setAlertMessage("識別碼輸入錯誤，請重新輸入");
+      setShowAlert(true);
+    }
+  };
+  const handleAlertClose = () => {
+    setShowAlert(false);
+    if (loginSuccess && loginData) {
+      router.push({
+        pathname: "/newForm",
+        query: loginData,
+      });
     }
   };
 
@@ -61,6 +79,9 @@ export default function company() {
           領取票券
         </button>
       </div>
+      {showAlert && (
+        <CustomAlert message={alertMessage} onClose={handleAlertClose} />
+      )}
     </div>
   );
 }

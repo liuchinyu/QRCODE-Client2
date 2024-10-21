@@ -1,8 +1,7 @@
-import Head from "next/head";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Image from "next/image";
+import CustomAlert from "./customAlert";
 
 export default function newForm() {
   const router = useRouter();
@@ -14,12 +13,15 @@ export default function newForm() {
   const [seat, setSeat] = useState(""); //座位
   const [ticket, setTicket] = useState(""); //剩餘票券
   const [message, setMessage] = useState(""); //錯誤訊息
-
   const [username, setUsername] = useState(""); //領票人
   const [emails, setEmail] = useState(""); //領票信箱
   const [numbers, setNumber] = useState(""); //大人領票張數
   const [kidNumbers, setKidNumber] = useState(""); //小孩人數
   const [currentUser, setCurrentUser] = useState("");
+
+  //儲存訊息
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
   //判斷是否有登入過
   useEffect(() => {
@@ -113,8 +115,13 @@ export default function newForm() {
         query: { company, names, seat, username, numbers, kidNumbers, emails },
       });
     } else {
-      alert(errorMessage);
+      setAlertMessage(errorMessage);
+      setShowAlert(true);
     }
+  };
+
+  const handleAlertClose = () => {
+    setShowAlert(false);
   };
 
   return (
@@ -149,7 +156,7 @@ export default function newForm() {
                 </h1>
               </div>
 
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊領票人姓名：
                 </div>
@@ -161,11 +168,10 @@ export default function newForm() {
                   className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
                   name="username"
                   id="username"
-                  placeholder="輸入姓名"
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊Email：
                 </div>
@@ -175,11 +181,10 @@ export default function newForm() {
                   type="email"
                   onChange={handleEmail}
                   className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
-                  placeholder="email"
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊大人的人數：
                 </div>
@@ -192,11 +197,10 @@ export default function newForm() {
                   name="number"
                   id="number"
                   min="0"
-                  placeholder="請輸入要領取的張數"
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊12歲以下孩童的人數：
                 </div>
@@ -213,8 +217,8 @@ export default function newForm() {
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-2 ">
-                <div className="btn-lg-form btn-md-form btn-form">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 ">
+                <div className="btn-lg-form btn-md-form btn-form btn-yellow">
                   ＊可領取的入場電子票券數量：
                 </div>
               </div>
@@ -243,6 +247,9 @@ export default function newForm() {
             </div>
           </div>
         </div>
+      )}
+      {showAlert && (
+        <CustomAlert message={alertMessage} onClose={handleAlertClose} />
       )}
     </>
   );

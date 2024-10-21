@@ -26,7 +26,7 @@ const QRCodePage = () => {
   //回到身分判斷頁面
   const backToLogin = () => {
     router.push({
-      pathname: API_URL + "company",
+      pathname: "/company",
     });
   };
 
@@ -71,30 +71,12 @@ const QRCodePage = () => {
     }
   }, [router.query]);
 
-<<<<<<< HEAD
-  useEffect(
-    () => {
-      if (textToEncode.trim() && names) {
-        QRCode.toDataURL(
-          textToEncode,
-          {
-            width: 256,
-            margin: 2,
-          },
-          (err, url) => {
-            if (err) {
-              console.error(err);
-              return;
-            }
-            setQRCodeUrl(url); //產生QRCODE的Data URL
-=======
   useEffect(() => {
     async function fetchDataAndGenerateQR() {
       const response = await fetch(API_URL + "get-ticket-id");
       const data = await response.json();
       const numericData = Number(data);
       setTicket(numericData);
->>>>>>> develop
 
       // 生成 QRCODE並發送郵件
       if (textToEncode.trim() && names && numbers && data) {

@@ -53,7 +53,7 @@ export default function company() {
     setShowAlert(false);
     if (loginSuccess && loginData) {
       router.push({
-        pathname: API_URL + "newForm",
+        pathname: "/newForm",
         query: loginData,
       });
     }

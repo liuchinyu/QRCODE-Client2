@@ -66,7 +66,7 @@ export default function newForm() {
   //回到身分判斷頁面
   const backToLogin = () => {
     router.push({
-      pathname: API_URL + "company",
+      pathname: "/company",
     });
   };
 
@@ -113,7 +113,7 @@ export default function newForm() {
       );
 
       router.push({
-        pathname: API_URL + "QRCodeGenerator",
+        pathname: "/QRCodeGenerator",
         query: { company, names, seat, username, numbers, kidNumbers, emails },
       });
     } else {

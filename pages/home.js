@@ -2,12 +2,14 @@
 import React from "react";
 import { useRouter } from "next/router";
 
+const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+
 export default function Home() {
   const router = useRouter();
 
   const handleLogin = async (e) => {
     router.push({
-      pathname: "/company",
+      pathname: API_URL + "company",
     });
   };
 

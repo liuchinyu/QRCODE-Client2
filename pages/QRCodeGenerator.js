@@ -2,7 +2,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import QRCode from "qrcode";
-import Image from "next/image";
+
+const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
 
 const QRCodePage = () => {
   const [qrCodeUrl, setQRCodeUrl] = useState("");
@@ -25,7 +26,7 @@ const QRCodePage = () => {
   //回到身分判斷頁面
   const backToLogin = () => {
     router.push({
-      pathname: "/company",
+      pathname: API_URL + "company",
     });
   };
 
@@ -89,9 +90,7 @@ const QRCodePage = () => {
 =======
   useEffect(() => {
     async function fetchDataAndGenerateQR() {
-      const response = await fetch(
-        "http://localhost:8080/api/user/get-ticket-id"
-      );
+      const response = await fetch(API_URL + "get-ticket-id");
       const data = await response.json();
       const numericData = Number(data);
       setTicket(numericData);
@@ -142,26 +141,23 @@ const QRCodePage = () => {
     ticketNum = Number(ticketNum);
     try {
       if (currentUser) {
-        const response = await fetch(
-          "http://localhost:8080/api/user/user-send-email",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              qrCodeUrl,
-              company,
-              names,
-              seat,
-              username,
-              numbers,
-              kidNumbers,
-              emails,
-              ticketNum,
-            }),
-          }
-        );
+        const response = await fetch(API_URL + "user-send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            qrCodeUrl,
+            company,
+            names,
+            seat,
+            username,
+            numbers,
+            kidNumbers,
+            emails,
+            ticketNum,
+          }),
+        });
 
         if (response.ok) {
           localStorage.removeItem("user");

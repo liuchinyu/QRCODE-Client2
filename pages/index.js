@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 export default function Home() {
   const router = useRouter();
 
+  // console.log()
   const handleLogin = async (e) => {
     router.push({
       pathname: "/company",

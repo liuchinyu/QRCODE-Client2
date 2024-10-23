@@ -11,7 +11,6 @@ export default function record() {
     async function getRecord() {
       try {
         let result = await axios.get(API_URL + "record");
-        console.log("result.data", result.data);
         let result_arr = result.data;
         result_arr.map((t, index) => console.log(t));
         setRecords(result_arr);
@@ -21,6 +20,11 @@ export default function record() {
     }
     getRecord();
   }, []);
+
+  const formatDate = (dateString) => {
+    const [month, day, year] = dateString.split("/");
+    return `${year}/${month}/${day}`;
+  };
 
   return (
     <>
@@ -44,7 +48,7 @@ export default function record() {
             <tbody>
               {records.map((record, index) => (
                 <tr key={index} className="text-center ">
-                  <td>{record.get_ticket_date}</td>
+                  <td>{formatDate(record.get_ticket_date)}</td>
                   <td>{record.donor}</td>
                   <td>{record.taker}</td>
                   <td>{record.ticket_count}</td>

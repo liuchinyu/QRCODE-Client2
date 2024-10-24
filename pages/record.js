@@ -23,10 +23,7 @@ export default function record() {
 
   const formatDate = (dateString) => {
     if (dateString) {
-      const [year, month, day] = dateString.split("/");
-      console.log("month", month);
-      console.log("day", day);
-      console.log("year", year);
+      const [month, day, year] = dateString.split("/");
       return `${year}/${month}/${day}`;
     } else {
       return "";

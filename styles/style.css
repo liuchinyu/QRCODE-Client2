@@ -508,7 +508,7 @@
   .service-lg {
     color: #2f5597;
     position: absolute;
-    /* top: calc(75% - 3rem); */
+    top: calc(75% - 3rem);
     font-size: 1rem;
     text-align: left;
   }
@@ -520,5 +520,14 @@
     overflow-x: auto;
     position: absolute;
     top: 11rem;
+  }
+  .btn-lg-login {
+    color: black;
+    background-color: lightgray;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(50% + 3rem);
+    padding: 10px 15px;
   }
 }

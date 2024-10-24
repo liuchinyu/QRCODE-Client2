@@ -31,6 +31,12 @@ const QRCodePage = () => {
     });
   };
 
+  const handleLogin = () => {
+    router.push({
+      pathname: "/company",
+    });
+  };
+
   const emailSentRef = useRef(false);
   if (router.query && router.query.company == "company") {
     textToEncode =
@@ -217,6 +223,13 @@ const QRCodePage = () => {
                   ))}
                 </div>
               )}
+
+              <button
+                className="btn-lg-login btn-md-get-ticket btn-get-ticket"
+                onClick={handleLogin}
+              >
+                繼續取票
+              </button>
 
               <div className="service-lg service-md service-sm service mt-4">
                 如有票券取得之相關問題，請隨時與我們聯繫，謝謝

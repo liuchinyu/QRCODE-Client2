@@ -191,7 +191,7 @@ export default function newForm() {
                 <input
                   type="email"
                   onChange={handleEmail}
-                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
+                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form font-lg"
                   required
                 />
               </div>

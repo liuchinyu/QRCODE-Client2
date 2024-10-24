@@ -450,7 +450,8 @@
     color: black;
     font-size: 1.1rem;
     font-weight: bold;
-    width: 15rem;
+    width: 18.5rem;
+    height: 8vh;
     border-radius: 10px;
     /* padding: 8px; */
   }
@@ -497,6 +498,9 @@
     padding: 12px;
     top: 17rem;
   }
+  .font-lg {
+    font-size: 0.6rem;
+  }
   /* QRCODE */
   .inform-qrcode-lg {
     color: red;
@@ -519,7 +523,7 @@
     max-width: 100%;
     overflow-x: auto;
     position: absolute;
-    top: 11rem;
+    top: 9.3rem;
   }
   .btn-lg-login {
     color: black;
@@ -527,7 +531,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     position: absolute;
-    top: calc(50% + 3rem);
+    top: calc(50% + 3.5rem);
     padding: 10px 15px;
   }
 }

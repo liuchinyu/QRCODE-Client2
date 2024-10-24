@@ -114,7 +114,16 @@ export default function newForm() {
 
       router.push({
         pathname: "/QRCodeGenerator",
-        query: { company, names, seat, username, numbers, kidNumbers, emails },
+        query: {
+          company,
+          names,
+          seat,
+          username,
+          numbers,
+          ticket_left,
+          kidNumbers,
+          emails,
+        },
       });
     } else {
       setAlertMessage(errorMessage);

@@ -22,8 +22,15 @@ export default function record() {
   }, []);
 
   const formatDate = (dateString) => {
-    const [month, day, year] = dateString.split("/");
-    return `${year}/${month}/${day}`;
+    if (dateString) {
+      const [year, month, day] = dateString.split("/");
+      console.log("month", month);
+      console.log("day", day);
+      console.log("year", year);
+      return `${year}/${month}/${day}`;
+    } else {
+      return "";
+    }
   };
 
   return (
@@ -39,6 +46,7 @@ export default function record() {
                 <th className="col-2">大人人數</th>
                 <th className="col-2">孩童人數</th>
                 <th className="col-2">領取入場電子票券的張數</th>
+                <th className="col-2">票券剩餘張數</th>
                 <th className="col-3">座位</th>
                 <th>Gmail</th>
                 <th>票券號碼</th>
@@ -54,6 +62,7 @@ export default function record() {
                   <td>{record.ticket_count}</td>
                   <td>{record.ticket_kid}</td>
                   <td>{record.ticket_count}</td>
+                  <td>{record.ticket_left}</td>
                   <td>{record.seat}</td>
                   <td className="mx-w1">{record.email}</td>
                   <td>XGEN{record.ticket_id}</td>

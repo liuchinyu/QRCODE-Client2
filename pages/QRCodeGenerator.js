@@ -15,6 +15,7 @@ const QRCodePage = () => {
   const [numbers, setNumber] = useState(""); //大人領票張數
   const [kidNumbers, setKidNumber] = useState(""); //小孩人數
   const [ticketNum, setTicket] = useState("");
+  const [ticketLeft, setTicketLeft] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const router = useRouter();
   let textToEncode = "";
@@ -67,6 +68,7 @@ const QRCodePage = () => {
       setUsername(router.query.username);
       setEmail(router.query.emails);
       setNumber(Number(router.query.numbers));
+      setTicketLeft(Number(router.query.ticket_left));
       setKidNumber(Number(router.query.kidNumbers));
     }
   }, [router.query]);
@@ -135,6 +137,7 @@ const QRCodePage = () => {
             seat,
             username,
             numbers,
+            ticketLeft,
             kidNumbers,
             emails,
             ticketNum,

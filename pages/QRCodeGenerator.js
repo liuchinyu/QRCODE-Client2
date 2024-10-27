@@ -89,7 +89,7 @@ const QRCodePage = () => {
       // 生成 QRCODE並發送郵件
       if (textToEncode.trim() && names && numbers && data) {
         const qrPromises = Array.from(
-          { length: parseInt(numbers) },
+          { length: numbers + kidNumbers },
           (_, index) => {
             const individualText = `${textToEncode}\n票券號碼：${
               "XGEN" + (numericData + index + 1)

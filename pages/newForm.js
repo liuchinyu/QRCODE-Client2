@@ -49,10 +49,10 @@ export default function newForm() {
   }, [userData]);
 
   const handelNumber = (e) => {
-    setNumber(e.target.value);
+    setNumber(parseInt(e.target.value));
   };
   const handelKidNumber = (e) => {
-    setKidNumber(e.target.value);
+    setKidNumber(parseInt(e.target.value));
   };
 
   const handelUserName = (e) => {
@@ -79,7 +79,7 @@ export default function newForm() {
     if (!numbers) {
       errorMessage += "請輸入領取票券\n";
     }
-    if (!kidNumbers) {
+    if (!kidNumbers && kidNumbers != 0) {
       errorMessage += "請輸入12歲以下孩童人數，若不攜帶孩童請輸入0\n";
     }
     if (!username) {
@@ -133,6 +133,11 @@ export default function newForm() {
 
   const handleAlertClose = () => {
     setShowAlert(false);
+  };
+
+  const returnNumber = (num) => {
+    if (isNaN(num)) return 0;
+    else return num;
   };
 
   return (
@@ -230,7 +235,7 @@ export default function newForm() {
               </div>
               <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 ">
                 <div className="btn-lg-form btn-md-form btn-form btn-yellow">
-                  ＊可領取的入場電子票券數量：
+                  ＊入場電子票券數量總計：
                 </div>
               </div>
               <div className="col-6">
@@ -240,7 +245,7 @@ export default function newForm() {
                   className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form limit"
                   name="number"
                   id="number"
-                  value={numbers}
+                  value={returnNumber(numbers) + returnNumber(kidNumbers)}
                   min="0"
                   readOnly
                   required

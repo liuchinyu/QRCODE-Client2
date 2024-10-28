@@ -61,7 +61,7 @@ export default function company() {
 
   return (
     <div className="background-container position-relative d-flex justify-content-center align-items-center">
-      <div className="background-ticket"></div>
+      <div className="background-ticket background-phone2"></div>
       <div className="content d-flex flex-wrap justify-content-center">
         <div className="inform-lg inform-md inform">
           請輸入取票識別碼進行線上取票
@@ -81,6 +81,16 @@ export default function company() {
           領取票券
         </button>
       </div>
+      <p className="text position-absolute">
+        如有票券取得之相關問題，請隨時與我們聯繫，謝謝
+        <br />
+        客服電話：(02)2792-8788#502
+        <br />
+        客服信箱：xgen.org.tw@gmail.com
+        <br />
+        服務時間：週一到週五 09:00~18:00
+      </p>
+      {/* 驗證碼輸入錯誤訊息 */}
       {showAlert && (
         <CustomAlert message={alertMessage} onClose={handleAlertClose} />
       )}

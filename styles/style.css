@@ -9,6 +9,11 @@
   height: 100vh;
   overflow: hidden;
 }
+
+.text {
+  display: none;
+}
+
 .vh-90 {
   height: 90vh;
 }
@@ -246,6 +251,201 @@
 }
 
 /* 響應式設定 */
+/* 手機 */
+@media (max-width: 570px) {
+  .background-phone {
+    width: 100%;
+    background-image: url("../public/background-phone.png");
+    /* background-size: cover; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: #b3b3b36e;
+  }
+  .background-phone2 {
+    width: 100%;
+    background-image: url("../public/background-phone2.png");
+    /* background-size: cover; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: #b3b3b36e;
+  }
+  /* index設定 */
+  .content {
+    width: 100%;
+  }
+  .btn-entrance {
+    position: absolute;
+    text-align: center;
+    top: calc(0% - 1.5rem);
+    left: -5rem;
+    background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
+    padding: 5px;
+  }
+  .text {
+    display: block;
+    top: calc(80% + 2.5rem);
+    /* background-color: #edcc71; */
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
+    padding: 0px 22px 0px 22px;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  /* company設定 */
+  .inform {
+    color: red;
+    font-size: 1.6rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(0% - 9rem);
+  }
+  .btn-ticket {
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px 12px;
+    top: calc(0%);
+    left: 1.8rem;
+  }
+  .form-control {
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(0%);
+    left: calc(25% + 2rem);
+  }
+  .btn-get-ticket {
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(25% + 3rem);
+    padding: 6px 8px;
+    border: none;
+    border-radius: 10px;
+  }
+}
+@media screen and (max-width: 570px) and (max-height: calc(100vw + 440px)) {
+  .btn-entrance {
+    position: absolute;
+    text-align: center;
+    top: calc(0% - 10px);
+    left: -5rem;
+    background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
+    padding: 5px;
+  }
+  .text {
+    display: block;
+    top: calc(80% + 1rem);
+    /* background-color: #edcc71; */
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
+    padding: 15px 5px;
+    color: black;
+    font-size: 0.9rem;
+  }
+  .btn-ticket {
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px 12px;
+    top: calc(0%);
+    left: 1.1rem;
+  }
+}
+@media screen and (max-width: 570px) and (max-height: calc(100vw + 432px)) {
+  .text {
+    display: block;
+    top: calc(80% + 3.5rem);
+    /* background-color: #edcc71; */
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
+    padding: 7px 0px;
+    color: black;
+    font-size: 1rem;
+  }
+
+  .btn-ticket {
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px 12px;
+    top: calc(0%);
+    left: 2rem;
+  }
+}
+
+@media screen and (max-width: 570px) and (max-height: calc(100vw + 400px)) {
+  .text {
+    display: block;
+    top: calc(80% + 3rem);
+    /* background-color: #edcc71; */
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
+    padding: 0px 0px;
+    color: black;
+    /* font-weight: bold; */
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .btn-ticket {
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px 12px;
+    top: calc(0%);
+    left: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 570px) and (max-height: calc(100vw + 335px)) {
+  .btn-entrance {
+    position: absolute;
+    text-align: center;
+    top: calc(0% + 3.5rem);
+    left: -5rem;
+    background-color: ;
+    background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
+    padding: 5px;
+  }
+  .text {
+    display: block;
+    top: calc(80% + 3rem);
+    /* background-color: #edcc71; */
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
+    padding: 8px 0px;
+    color: black;
+    /* font-weight: bold; */
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .btn-ticket {
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px 12px;
+    top: calc(0%);
+    left: 1.6rem;
+  }
+}
+@media screen and (max-width: 570px) and (max-height: calc(100vw + 322px)) {
+  .btn-entrance {
+    position: absolute;
+    text-align: center;
+    top: calc(0% + 3.5rem);
+    left: -5rem;
+    background-color: ;
+    background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
+    padding: 5px;
+  }
+  .text {
+    display: none;
+  }
+}
 
 /* sm */
 @media (min-width: 576px) {

@@ -279,7 +279,7 @@
     position: absolute;
     text-align: center;
     top: calc(0% - 1.5rem);
-    left: -5rem;
+    left: calc(25% + 1.2rem);
     background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
     padding: 5px;
   }
@@ -333,7 +333,6 @@
     position: absolute;
     text-align: center;
     top: calc(0% - 10px);
-    left: -5rem;
     background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
     padding: 5px;
   }
@@ -406,8 +405,6 @@
     position: absolute;
     text-align: center;
     top: calc(0% + 3.5rem);
-    left: -5rem;
-    background-color: ;
     background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
     padding: 5px;
   }
@@ -437,8 +434,6 @@
     position: absolute;
     text-align: center;
     top: calc(0% + 3.5rem);
-    left: -5rem;
-    background-color: ;
     background-color: rgba(255, 255, 255, 0.5); /* 白色背景，50%透明度 */
     padding: 5px;
   }

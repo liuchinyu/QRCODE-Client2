@@ -155,15 +155,24 @@ export default function newForm() {
       )}
       {currentUser && (
         <div className="background-container position-relative d-flex justify-content-center align-items-center overflow-hidden ">
-          <div className="background-ticket-2"></div>
+          <div className="background-ticket-2 background-phone2"></div>
           <div className="content-form d-flex flex-wrap justify-content-center">
             <div className="row">
               <div className="col-12 d-flex justify-content-center">
-                <h2 className="inform-lg-newForm inform-md-newForm inform-newForm">
+                {/* 手機以上 */}
+                <h2 className="d-none d-sm-block inform-lg-newForm inform-md-newForm inform-newForm">
                   ＊＊請確認當天出席人數再進行取票，每張入場電子票券僅限１位大人使用
                 </h2>
-                <h2 className="inform-lg-newForm-2 inform-md-newForm-2 inform-newForm-2">
+                {/* 手機 */}
+                <h2 className="d-sm-none inform-lg-newForm inform-md-newForm inform-newForm">
+                  請確認當天出席人數再進行取票<br></br>
+                  每張入場電子票券僅限１位大人使用
+                </h2>
+                <h2 className="d-none d-sm-block inform-lg-newForm-2 inform-md-newForm-2 inform-newForm-2">
                   ＊＊12歲以下的孩童可免費入場，請確實填寫人數以利安排座位
+                </h2>
+                <h2 className="d-sm-none inform-lg-newForm-2 inform-md-newForm-2 inform-newForm-2">
+                  12歲以下的孩童可免費入場，請確實填寫人數以利安排座位
                 </h2>
               </div>
               <div className="col-12 pb-lg-0 pb-md-2 pb-4">
@@ -172,7 +181,7 @@ export default function newForm() {
                 </h1>
               </div>
 
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊領票人姓名：
                 </div>
@@ -187,7 +196,7 @@ export default function newForm() {
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊Email：
                 </div>
@@ -200,7 +209,7 @@ export default function newForm() {
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊大人的人數：
                 </div>
@@ -216,7 +225,7 @@ export default function newForm() {
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
                 <div className="btn-lg-form btn-md-form btn-form">
                   ＊12歲以下孩童的人數：
                 </div>
@@ -233,7 +242,7 @@ export default function newForm() {
                   required
                 />
               </div>
-              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 ">
+              <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
                 <div className="btn-lg-form btn-md-form btn-form btn-yellow">
                   ＊入場電子票券數量總計：
                 </div>
@@ -262,8 +271,18 @@ export default function newForm() {
               </div>
             </div>
           </div>
+          {/* --------------------------------------------------------------------------------------- */}
         </div>
       )}
+      <p className="text position-absolute">
+        如有票券取得之相關問題，請隨時與我們聯繫，謝謝
+        <br />
+        客服電話：(02)2792-8788#502
+        <br />
+        客服信箱：xgen.org.tw@gmail.com
+        <br />
+        服務時間：週一到週五 09:00~18:00
+      </p>
       {showAlert && (
         <CustomAlert message={alertMessage} onClose={handleAlertClose} />
       )}

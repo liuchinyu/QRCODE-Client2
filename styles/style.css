@@ -141,7 +141,6 @@
   transform: translate(-50%, -50%);
   border-radius: 10px;
   padding: 0.6rem;
-  /* width: ; */
 }
 .btn-form {
   color: black;
@@ -285,7 +284,7 @@
   }
   .text {
     display: block;
-    top: calc(80% + 2.5rem);
+    top: calc(80% + 2rem);
     /* background-color: #edcc71; */
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
@@ -304,28 +303,79 @@
     top: calc(0% - 9rem);
   }
   .btn-ticket {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: bold;
     position: absolute;
     padding: 5px 12px;
     top: calc(0%);
-    left: 1.8rem;
+    left: 0.25rem;
   }
   .form-control {
-    font-size: 1rem;
+    text-align: center;
+    font-size: 1.25rem;
     font-weight: bold;
     position: absolute;
+    padding: 6px 0px;
+    width: 16.5rem;
     top: calc(0%);
-    left: calc(25% + 2rem);
+    left: calc(25% + 1.75rem);
   }
   .btn-get-ticket {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     position: absolute;
     top: calc(25% + 3rem);
-    padding: 6px 8px;
+    padding: 6px 15px;
     border: none;
     border-radius: 10px;
+  }
+  /* newForm */
+  .inform-newForm {
+    font-size: 1.2rem;
+    top: -9rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+  }
+  .inform-newForm-2 {
+    font-size: 0.9rem;
+    top: -5.5rem;
+  }
+  .company-name {
+    font-size: 1.35rem;
+    top: -1.5rem;
+    width: 15rem;
+    /* transform: translate(-50%, -50%); */
+    border-radius: 10px;
+    padding: 0.6rem;
+  }
+  .btn-form {
+    position: relative;
+    font-size: 0.85rem;
+    width: 13rem;
+    padding: 6px;
+    left: 0.5rem;
+    top: -0.5rem;
+  }
+  .input-form {
+    position: relative;
+    top: -0.5rem;
+    left: -0.65rem;
+    font-size: 0.85rem;
+    width: 11.5rem;
+    padding: 4px;
+  }
+  .btn-get-form {
+    padding: 8px 6px;
+    width: 7rem;
+    font-size: 1.35rem;
+    top: 1rem;
+    left: -0rem;
+  }
+  .font-lg {
+    font-size: 0.7rem;
+  }
+  .phone-5 {
+    padding-bottom: 0.5rem !important;
   }
 }
 @media screen and (max-width: 570px) and (max-height: calc(100vw + 440px)) {
@@ -347,12 +397,66 @@
     font-size: 0.9rem;
   }
   .btn-ticket {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: bold;
     position: absolute;
     padding: 5px 12px;
     top: calc(0%);
-    left: 1.1rem;
+    left: 0.15rem;
+  }
+  .form-control {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 6px 0px;
+    width: 14rem;
+    top: calc(0%);
+    left: calc(25% + 2.3rem);
+  }
+  /* newForm */
+  .inform-newForm {
+    font-size: 1.2rem;
+    top: -6.5rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+  }
+  .inform-newForm-2 {
+    font-size: 0.83rem;
+    top: -3rem;
+  }
+  .company-name {
+    font-size: 1.45rem;
+    top: 0.5rem;
+    width: 15rem;
+    border-radius: 10px;
+    padding: 0.6rem;
+  }
+  .btn-form {
+    position: relative;
+    font-size: 0.85rem;
+    width: 13rem;
+    padding: 6px 0px;
+    left: 0.5rem;
+    top: 1.75rem;
+  }
+  .input-form {
+    position: relative;
+    top: 1.75rem;
+    left: -0.85rem;
+    font-size: 0.85rem;
+    width: 11rem;
+    padding: 3.5px 0px;
+  }
+  .btn-get-form {
+    padding: 8px 6px;
+    width: 7rem;
+    font-size: 1.35rem;
+    top: 2rem;
+    left: 0rem;
+  }
+  .font-lg {
+    font-size: 0.7rem;
   }
 }
 @media screen and (max-width: 570px) and (max-height: calc(100vw + 432px)) {
@@ -362,18 +466,75 @@
     /* background-color: #edcc71; */
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
-    padding: 7px 0px;
+    padding: 7px 5px;
     color: black;
     font-size: 1rem;
   }
 
   .btn-ticket {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: bold;
     position: absolute;
     padding: 5px 12px;
     top: calc(0%);
-    left: 2rem;
+    left: 1rem;
+  }
+  .form-control {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 6px 0px;
+    width: 15rem;
+    top: calc(0%);
+    left: calc(25% + 2.3rem);
+  }
+  /* newForm */
+  .inform-newForm {
+    font-size: 1.2rem;
+    top: -5rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+  }
+  .inform-newForm-2 {
+    font-size: 0.9rem;
+    top: -1.5rem;
+  }
+  .company-name {
+    font-size: 1.35rem;
+    top: 2.35rem;
+    width: 15rem;
+    border-radius: 10px;
+    padding: 0.6rem;
+  }
+  .btn-form {
+    position: relative;
+    font-size: 0.85rem;
+    width: 13rem;
+    padding: 6px 0px;
+    left: 0.5rem;
+    top: 3rem;
+  }
+  .input-form {
+    position: relative;
+    top: 3rem;
+    left: -0.5rem;
+    font-size: 0.85rem;
+    width: 11.5rem;
+    padding: 3.5px 0px;
+  }
+  .btn-get-form {
+    padding: 8px 6px;
+    width: 7rem;
+    font-size: 1.35rem;
+    top: 4rem;
+    left: 0rem;
+  }
+  .font-lg {
+    font-size: 0.7rem;
+  }
+  .phone-5 {
+    padding-bottom: 0.5rem !important;
   }
 }
 
@@ -381,22 +542,75 @@
   .text {
     display: block;
     top: calc(80% + 3rem);
-    /* background-color: #edcc71; */
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(189, 119, 119, 0.1);
-    padding: 0px 0px;
+    padding: 0px 5px;
     color: black;
     /* font-weight: bold; */
     font-size: 0.9rem;
     line-height: 1.6;
   }
   .btn-ticket {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: bold;
     position: absolute;
     padding: 5px 12px;
     top: calc(0%);
-    left: 1.1rem;
+    left: 0.15rem;
+  }
+  .form-control {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 6px 0px;
+    width: 14rem;
+    top: calc(0%);
+    left: calc(25% + 2.3rem);
+  }
+  /* newForm */
+  .inform-newForm {
+    font-size: 1.2rem;
+    top: -5rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+  }
+  .inform-newForm-2 {
+    font-size: 0.83rem;
+    top: -1.5rem;
+  }
+  .company-name {
+    font-size: 1.45rem;
+    top: 2.35rem;
+    width: 15rem;
+    border-radius: 10px;
+    padding: 0.6rem;
+  }
+  .btn-form {
+    position: relative;
+    font-size: 0.85rem;
+    width: 13rem;
+    padding: 6px 0px;
+    left: 0.5rem;
+    top: 3rem;
+  }
+  .input-form {
+    position: relative;
+    top: 3rem;
+    left: -0.85rem;
+    font-size: 0.85rem;
+    width: 11rem;
+    padding: 3.5px 0px;
+  }
+  .btn-get-form {
+    padding: 8px 6px;
+    width: 7rem;
+    font-size: 1.35rem;
+    top: 3.35rem;
+    left: 0rem;
+  }
+  .font-lg {
+    font-size: 0.7rem;
   }
 }
 
@@ -421,12 +635,12 @@
     line-height: 1.6;
   }
   .btn-ticket {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: bold;
     position: absolute;
-    padding: 5px 12px;
+    padding: 5px 10px;
     top: calc(0%);
-    left: 1.6rem;
+    left: 0.1rem;
   }
 }
 @media screen and (max-width: 570px) and (max-height: calc(100vw + 322px)) {
@@ -439,6 +653,72 @@
   }
   .text {
     display: none;
+  }
+  .btn-ticket {
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px 10px;
+    top: 0%;
+    left: 0.35rem;
+  }
+  .form-control {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    position: absolute;
+    padding: 6px 0px;
+    width: 16.5rem;
+    top: calc(0%);
+    left: calc(25% + 1.75rem);
+  }
+  /* newForm */
+  .inform-newForm {
+    font-size: 1.1rem;
+    top: -1rem;
+    line-height: 1.5rem;
+    font-weight: bold;
+  }
+  .inform-newForm-2 {
+    font-size: 0.8rem;
+    top: 2.25rem;
+  }
+  .company-name {
+    font-size: 1.35rem;
+    top: 5.35rem;
+    width: 15rem;
+    /* transform: translate(-50%, -50%); */
+    border-radius: 10px;
+    padding: 0.6rem;
+  }
+  .btn-form {
+    position: relative;
+    font-size: 0.85rem;
+    width: 13rem;
+    padding: 6px 0px;
+    left: 0.5rem;
+    top: 6rem;
+  }
+  .input-form {
+    position: relative;
+    top: 6rem;
+    left: -0.5rem;
+    font-size: 0.85rem;
+    width: 10.5rem;
+    padding: 3.5px 0px;
+  }
+  .btn-get-form {
+    padding: 8px 6px;
+    width: 7rem;
+    font-size: 1.35rem;
+    top: 6rem;
+    left: 0rem;
+  }
+  .font-lg {
+    font-size: 0.7rem;
+  }
+  .phone-5 {
+    padding-bottom: 0.5rem !important;
   }
 }
 

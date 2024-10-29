@@ -45,7 +45,20 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  min-height: 100vh;
+  position: fixed;
 }
+
+.background-test {
+  position: relative;
+  z-index: -5;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  min-height: 100vh;
+}
+
+/* test */
 
 .content {
   position: absolute;
@@ -196,7 +209,7 @@
 .service {
   color: #2f5597;
   position: absolute;
-  top: calc(50% + 1rem);
+  top: calc(20% + 1rem);
   font-size: 0.6rem;
   text-align: left;
 }
@@ -786,7 +799,7 @@
     font-size: 1.3rem;
     font-weight: bold;
     position: absolute;
-    top: 13rem;
+    top: 15rem;
   }
   /* newform */
   .md-container {
@@ -983,13 +996,24 @@
     font-weight: bold;
     position: absolute;
     top: 1.5rem;
+    left: calc(25%);
   }
   .service-lg {
     color: #2f5597;
     position: absolute;
-    top: calc(75% - 3rem);
-    font-size: 1rem;
+    top: calc(25% + 2rem);
+    left: calc(30% + 2rem);
+    font-size: 1.25rem;
     text-align: left;
+  }
+  .btn-lg-login {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(55% + 3.5rem);
+    left: calc(40% + 3rem);
+    padding: 10px 15px;
   }
   .container {
     max-width: 960px !important;
@@ -998,15 +1022,7 @@
     max-width: 100%;
     overflow-x: auto;
     position: absolute;
-    top: 9.3rem;
-  }
-  .btn-lg-login {
-    color: black;
-    background-color: lightgray;
-    font-size: 1.5rem;
-    font-weight: bold;
-    position: absolute;
-    top: calc(50% + 3.5rem);
-    padding: 10px 15px;
+    top: calc(65% + 3.5rem);
+    left: calc(10%);
   }
 }

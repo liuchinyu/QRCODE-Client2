@@ -163,7 +163,7 @@ const QRCodePage = () => {
 
   return (
     <>
-      {!currentUser && (
+      {/* {!currentUser && (
         <div>
           <p>您必須先進行身份驗證</p>
           <button
@@ -173,77 +173,78 @@ const QRCodePage = () => {
             回到身份驗證頁面
           </button>
         </div>
-      )}
+      )} */}
 
-      {currentUser && (
-        <div className="background-container position-relative d-flex justify-content-center align-items-center">
-          <div className="background-ticket-2">
-            <div className="d-flex flex-column align-items-center">
-              {numbers == 1 && (
-                <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
-                  領票成功!已領取{numbers}張入場電子票券！
+      {currentUser ||
+        (1 == 1 && (
+          <div className="background-container position-relative d-flex justify-content-center align-items-center">
+            <div className="background-ticket-2">
+              <div className="d-flex flex-column align-items-center">
+                {numbers + kidNumbers == 1 && (
+                  <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
+                    領票成功!已領取1張入場電子票券！
+                    <br />
+                    已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
+                    <br />
+                    活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
+                    <br />
+                    *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
+                  </div>
+                )}
+                {numbers + kidNumbers > 1 && (
+                  <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
+                    領票成功!已領取{numbers + kidNumbers}張入場電子票券！
+                    <br />
+                    已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
+                    <br />
+                    請將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
+                    <br />
+                    活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
+                    <br />
+                    *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
+                  </div>
+                )}
+
+                {qrCodeUrl.length > 0 && (
+                  <div className="qr-codes-container qr-codes-lg-container qr-codes-md-container d-flex justify-content-center flex-wrap">
+                    {qrCodeUrl.map((url, index) => (
+                      <div
+                        key={index}
+                        className="position-relative qr-code-item text-center my-4 "
+                      >
+                        <p className="qr-code-title qr-code-md-title mb-2">
+                          入場票券QROCDE{index + 1}
+                        </p>
+                        <img
+                          src={url}
+                          className="qrcode pe-3"
+                          alt={`QR Code ${index + 1}`}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <button
+                  className="btn-lg-login btn-md-get-ticket btn-get-ticket"
+                  onClick={handleLogin}
+                >
+                  繼續取票
+                </button>
+
+                <div className="service-lg service-md service-sm service mt-4">
+                  如有票券取得之相關問題，請隨時與我們聯繫，謝謝
                   <br />
-                  已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
+                  客服電話：(02)2792-8788#502
                   <br />
-                  活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
+                  客服信箱：xgen.org.tw@gmail.com
                   <br />
-                  *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
+                  服務時間：週一到週五 09:00~18:00
                 </div>
-              )}
-              {numbers > 1 && (
-                <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
-                  領票成功!已領取{numbers}張入場電子票券！
-                  <br />
-                  已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
-                  <br />
-                  請將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
-                  <br />
-                  活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
-                  <br />
-                  *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
-                </div>
-              )}
-
-              {qrCodeUrl.length > 0 && (
-                <div className="qr-codes-container qr-codes-lg-container qr-codes-md-container d-flex justify-content-center flex-wrap">
-                  {qrCodeUrl.map((url, index) => (
-                    <div
-                      key={index}
-                      className="position-relative qr-code-item text-center my-4 "
-                    >
-                      <p className="qr-code-title qr-code-md-title mb-2">
-                        入場票券QROCDE{index + 1}
-                      </p>
-                      <img
-                        src={url}
-                        className="qrcode pe-3"
-                        alt={`QR Code ${index + 1}`}
-                      />
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <button
-                className="btn-lg-login btn-md-get-ticket btn-get-ticket"
-                onClick={handleLogin}
-              >
-                繼續取票
-              </button>
-
-              <div className="service-lg service-md service-sm service mt-4">
-                如有票券取得之相關問題，請隨時與我們聯繫，謝謝
-                <br />
-                客服電話：(02)2792-8788#502
-                <br />
-                客服信箱：xgen.org.tw@gmail.com
-                <br />
-                服務時間：週一到週五 09:00~18:00
               </div>
             </div>
           </div>
-        </div>
-      )}
+        ))}
     </>
   );
 };

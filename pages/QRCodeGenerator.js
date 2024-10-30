@@ -164,7 +164,7 @@ const QRCodePage = () => {
 
   return (
     <>
-      {/* {!currentUser && (
+      {!currentUser && (
         <div>
           <p>您必須先進行身份驗證</p>
           <button
@@ -174,7 +174,7 @@ const QRCodePage = () => {
             回到身份驗證頁面
           </button>
         </div>
-      )} */}
+      )}
 
       {currentUser && (
         <div className="background-container position-relative d-flex justify-content-center align-items-center">
@@ -217,7 +217,7 @@ const QRCodePage = () => {
             </div>
 
             <button
-              className="btn-lg-login btn-md-get-ticket btn-get-ticket"
+              className="btn-login btn-md-get-ticket btn-get-ticket"
               onClick={handleLogin}
             >
               繼續取票

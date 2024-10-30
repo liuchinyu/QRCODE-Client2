@@ -286,6 +286,9 @@
     background-position: top;
     background-color: #b3b3b36e;
   }
+  .background-container {
+    overflow: hidden;
+  }
   /* index設定 */
   .content {
     width: 100%;

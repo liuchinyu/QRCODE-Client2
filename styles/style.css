@@ -219,8 +219,8 @@
 .service {
   color: #2f5597;
   position: absolute;
-  top: calc(20% + 1rem);
-  font-size: 0.6rem;
+  top: 40%;
+  font-size: 0.8rem;
   text-align: left;
 }
 .test {
@@ -741,20 +741,11 @@
 /* sm */
 @media (min-width: 576px) {
   /* QRCODE */
-  .inform-qrcode-sm {
-    color: red;
-    font-size: 0.7rem;
-    font-weight: bold;
-    position: absolute;
+  .inform-qrcode {
+    font-size: 0.8rem;
     top: calc(30% - 2.15rem);
   }
-  .service-sm {
-    color: #2f5597;
-    position: absolute;
-    top: calc(50% + 2rem);
-    font-size: 0.6rem;
-    text-align: left;
-  }
+
   .background-ticket-2 {
     width: 100%;
     height: 100%;
@@ -766,6 +757,20 @@
     /* background-position: top; */
     min-height: 100vh;
     position: fixed;
+  }
+
+  .btn-login {
+    color: black;
+    font-size: 1.35rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(55% + 3rem);
+    padding: 10px 15px;
+  }
+  .qr-codes-container {
+    max-width: 80%;
+    overflow-x: auto;
+    top: calc(65% + 3.5rem);
   }
 }
 
@@ -861,16 +866,6 @@
     border-radius: 10px;
     padding: 0.8rem 1.35rem;
   }
-  /* .btn-md-form {
-    color: black;
-    background-color: lightgray;
-    font-size: 0.8rem;
-    font-weight: bold;
-    width: 12.5rem;
-    border-radius: 10px;
-    border: none;
-    padding: 7px;
-  } */
   .btn-md-form {
     color: black;
     background-color: lightgray;
@@ -901,30 +896,29 @@
     /* padding: 9px; */
   }
   /* QRCODE */
-  .inform-qrcode-md {
-    color: red;
-    font-size: 0.9rem;
-    font-weight: bold;
-    position: absolute;
-    top: calc(20% - 1.15rem);
+  .inform-qrcode {
+    font-size: 1rem;
+    top: 15%;
   }
-  .service-md {
-    color: #2f5597;
-    position: absolute;
-    top: calc(75% - 5rem);
-    font-size: 0.8rem;
-    text-align: left;
-  }
-  .qr-codes-md-container {
-    max-width: 100%;
-    overflow-x: auto;
-    position: absolute;
-    top: 12.5rem;
-  }
+
   .qr-code-md-title {
     font-size: 12px;
     font-weight: bold;
     /* position: absolute; */
+  }
+  .service {
+    top: calc(35%);
+    font-size: 1rem;
+  }
+  .btn-login {
+    font-size: 1.35rem;
+    top: calc(55% + 3rem);
+    padding: 10px 15px;
+  }
+  .qr-codes-container {
+    max-width: 80%;
+    overflow-x: auto;
+    top: calc(65% + 3.5rem);
   }
 }
 
@@ -1043,34 +1037,19 @@
   }
   /* QRCODE */
   .inform-qrcode {
-    color: red;
     font-size: 1.2rem;
-    font-weight: bold;
-    position: absolute;
     top: 1.5rem;
   }
   .service {
-    color: #2f5597;
-    position: absolute;
     top: calc(25% + 2rem);
     font-size: 1.25rem;
-    text-align: left;
   }
   .btn-login {
-    color: black;
     font-size: 1.5rem;
-    font-weight: bold;
-    position: absolute;
     top: calc(55% + 3.5rem);
     padding: 10px 15px;
   }
   .container {
     max-width: 960px !important;
-  }
-  .qr-codes-container {
-    max-width: 80%;
-    overflow-x: auto;
-    position: absolute;
-    top: calc(65% + 3.5rem);
   }
 }

@@ -164,7 +164,7 @@ const QRCodePage = () => {
 
   return (
     <>
-      {!currentUser && (
+      {/* {!currentUser && (
         <div>
           <p>您必須先進行身份驗證</p>
           <button
@@ -174,7 +174,7 @@ const QRCodePage = () => {
             回到身份驗證頁面
           </button>
         </div>
-      )}
+      )} */}
 
       {currentUser && (
         <div className="background-container position-relative d-flex justify-content-center align-items-center">
@@ -183,7 +183,7 @@ const QRCodePage = () => {
           <div className="background-ticket-2"></div>
           <div className="d-flex flex-column align-items-center w-75">
             {numbers + kidNumbers == 1 && (
-              <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
+              <div className="inform-qrcode-md inform-qrcode text-center">
                 領票成功!已領取1張入場電子票券！
                 <br />
                 已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
@@ -194,7 +194,7 @@ const QRCodePage = () => {
               </div>
             )}
             {numbers + kidNumbers > 1 && (
-              <div className="inform-qrcode-lg inform-qrcode-md inform-qrcode-sm inform-qrcode text-center">
+              <div className="inform-qrcode-md inform-qrcode text-center">
                 領票成功!已領取{numbers + kidNumbers}張入場電子票券！
                 <br />
                 已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
@@ -206,7 +206,7 @@ const QRCodePage = () => {
                 *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
               </div>
             )}
-            <div className="service-lg service-md service-sm service mt-4">
+            <div className="service mt-4">
               如有票券取得之相關問題，請隨時與我們聯繫，謝謝
               <br />
               客服電話：(02)2792-8788#502
@@ -224,7 +224,7 @@ const QRCodePage = () => {
             </button>
 
             {qrCodeUrl.length > 0 && (
-              <div className="qr-codes-container qr-codes-lg-container qr-codes-md-container d-flex justify-content-center flex-wrap">
+              <div className="qr-codes-container d-flex justify-content-center flex-wrap">
                 {qrCodeUrl.map((url, index) => (
                   <div
                     key={index}

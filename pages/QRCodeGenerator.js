@@ -1,6 +1,5 @@
 //--新檔
 import React, { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import QRCode from "qrcode";
 
@@ -178,8 +177,6 @@ const QRCodePage = () => {
 
       {currentUser && (
         <div className="background-container position-relative d-flex justify-content-center align-items-center">
-          {/* <img src="../public/ticket-2.png" alt="圖片1111"></img> */}
-
           <div className="background-ticket-2"></div>
           <div className="d-flex flex-column align-items-center w-75">
             {numbers + kidNumbers == 1 && (

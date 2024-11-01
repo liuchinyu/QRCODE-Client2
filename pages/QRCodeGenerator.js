@@ -186,8 +186,6 @@ const QRCodePage = () => {
                 已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
                 <br />
                 活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
-                <br />
-                *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
               </div>
             )}
             {numbers + kidNumbers > 1 && (
@@ -199,8 +197,6 @@ const QRCodePage = () => {
                 請將入場電子票券轉發給其它出席人員，每個QRCODE僅限1人使用
                 <br />
                 活動當天於驗票口出示入場電子票券QRCODE即可進場，期待您的蒞臨!
-                <br />
-                *大人入場需出示入場電子票券，12歲以下的孩童可直接入場
               </div>
             )}
             <div className="service mt-4">

@@ -49,7 +49,7 @@
 .background-ticket-2 {
   width: 100%;
   height: 100%;
-  background-image: url("../public/ticket-2.png");
+  background-image: url("../public/background-phone2.png");
   /* background-size: cover; */
   background-size: contain;
   background-repeat: no-repeat;
@@ -241,7 +241,7 @@
   max-width: 100%;
   overflow-x: auto;
   position: absolute;
-  top: calc(40% - 1.5rem);
+  top: calc(75%);
 }
 
 .qr-code-item {
@@ -259,6 +259,17 @@
   top: -1rem; */
 }
 
+.btn-login {
+  color: black;
+  background-color: lightgray;
+  font-size: 1.35rem;
+  font-weight: bold;
+  position: absolute;
+  top: calc(55% + 3rem);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+}
 /* record  */
 .mx-w1 {
   max-width: 150px;
@@ -288,6 +299,9 @@
   }
   .background-container {
     overflow: hidden;
+  }
+  .phone-hidden {
+    overflow: visible;
   }
   /* index設定 */
   .content {
@@ -750,16 +764,7 @@
   }
 
   .background-ticket-2 {
-    width: 100%;
-    height: 100%;
     background-image: url("../public/background-tablet2.png");
-    /* background-size: cover; */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background-position: top; */
-    min-height: 100vh;
-    position: fixed;
   }
 
   .btn-login {
@@ -781,18 +786,6 @@
 @media (min-width: 768px) {
   /* 背景設定 */
 
-  .background-ticket-2 {
-    width: 100%;
-    height: 100%;
-    background-image: url("../public/background-tablet2.png");
-    /* background-size: cover; */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background-position: top; */
-    min-height: 100vh;
-    position: fixed;
-  }
   /* home */
   .btn-md-entrance {
     font-size: 1.5rem;
@@ -939,16 +932,7 @@
   }
 
   .background-ticket-2 {
-    width: 100%;
-    height: 100%;
     background-image: url("../public/ticket-2.png");
-    /* background-size: cover; */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    /* background-position: top; */
-    min-height: 100vh;
-    position: fixed;
   }
   /* home */
   .btn-lg-entrance {
@@ -1023,7 +1007,7 @@
     font-size: 1rem;
     font-weight: bold;
     width: 16rem;
-    border-radius: 10px;
+    border-radiu55s: 10px;
     border: none;
     padding: 11px;
     position: absolute;

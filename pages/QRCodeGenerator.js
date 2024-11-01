@@ -163,7 +163,7 @@ const QRCodePage = () => {
 
   return (
     <>
-      {!currentUser && (
+      {/* {!currentUser && (
         <div>
           <p>您必須先進行身份驗證</p>
           <button
@@ -173,10 +173,10 @@ const QRCodePage = () => {
             回到身份驗證頁面
           </button>
         </div>
-      )}
+      )} */}
 
       {currentUser && (
-        <div className="background-container position-relative d-flex justify-content-center align-items-center">
+        <div className="background-container phone-hidden position-relative d-flex justify-content-center align-items-center">
           <div className="background-ticket-2"></div>
           <div className="d-flex flex-column align-items-center w-75">
             {numbers + kidNumbers == 1 && (
@@ -213,10 +213,7 @@ const QRCodePage = () => {
               服務時間：週一到週五 09:00~18:00
             </div>
 
-            <button
-              className="btn-login btn-md-get-ticket btn-get-ticket"
-              onClick={handleLogin}
-            >
+            <button className="btn-login " onClick={handleLogin}>
               繼續取票
             </button>
 

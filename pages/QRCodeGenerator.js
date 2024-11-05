@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import QRCode from "qrcode";
+import CustomAlert from "./customAlert";
 
 // const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
 const API_URL = "http://localhost:8080/api/user/";
@@ -19,6 +20,9 @@ const QRCodePage = () => {
   const [ticketLeft, setTicketLeft] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const router = useRouter();
+  // 錯誤訊息
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
   let textToEncode = "";
 
   useEffect(() => {
@@ -36,6 +40,10 @@ const QRCodePage = () => {
     router.push({
       pathname: "/company",
     });
+  };
+
+  const handleAlertClose = () => {
+    setShowAlert(false);
   };
 
   const emailSentRef = useRef(false);
@@ -82,6 +90,7 @@ const QRCodePage = () => {
 
   useEffect(() => {
     async function fetchDataAndGenerateQR() {
+      // 取得當前最小的票券編號
       const response = await fetch(API_URL + "get-ticket-id");
       const data = await response.json();
       const numericData = Number(data);
@@ -154,7 +163,10 @@ const QRCodePage = () => {
         if (response.ok) {
           localStorage.removeItem("user");
         } else {
-          console.error("郵件發送失敗");
+          setShowAlert(true);
+          setAlertMessage("票券已全數領取完畢，如有問題請洽相關窗口，謝謝!");
+          setCurrentUser("");
+          localStorage.removeItem("user");
         }
       }
     } catch (error) {
@@ -164,7 +176,11 @@ const QRCodePage = () => {
 
   return (
     <>
-      {/* {!currentUser && (
+      {showAlert && (
+        <CustomAlert message={alertMessage} onClose={handleAlertClose} />
+      )}
+
+      {!currentUser && (
         <div>
           <p>您必須先進行身份驗證</p>
           <button
@@ -174,7 +190,7 @@ const QRCodePage = () => {
             回到身份驗證頁面
           </button>
         </div>
-      )} */}
+      )}
 
       {currentUser && (
         <div className="background-container phone-hidden position-relative d-flex justify-content-center align-items-center">

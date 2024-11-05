@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+// const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+const API_URL = "http://localhost:8080/api/user/";
 
 export default function record() {
   const [records, setRecords] = useState("");
@@ -37,14 +38,17 @@ export default function record() {
           <table className="table table-striped table-hover">
             <thead>
               <tr className="text-center">
-                <th className="col-1">領票日期(年/月/日)</th>
-                <th className="col-2">捐款人名稱</th>
-                <th className="col-2">領票人姓名</th>
-                <th className="col-2">大人人數</th>
-                <th className="col-2">孩童人數</th>
-                <th className="col-2">領取入場電子票券的張數</th>
-                <th className="col-2">票券剩餘張數</th>
-                <th className="col-3">座位</th>
+                <th>領票日期(年/月/日)</th>
+                <th>捐款人名稱</th>
+                <th>領票人姓名</th>
+                <th>大人人數</th>
+                <th>孩童人數</th>
+                <th>領取入場電子票券的張數</th>
+                <th>票券剩餘張數</th>
+                <th>座位區域</th>
+                <th>座位排數</th>
+                <th>座位編號</th>
+                <th>空位</th>
                 <th>Gmail</th>
                 <th>票券號碼</th>
                 <th>QRCODE連結</th>
@@ -60,7 +64,10 @@ export default function record() {
                   <td>{record.ticket_kid}</td>
                   <td>{record.ticket_count}</td>
                   <td>{record.ticket_left}</td>
-                  <td>{record.seat}</td>
+                  <td>{record.seat_area}</td>
+                  <td>{record.seat_row}</td>
+                  <td>{record.seat_number}</td>
+                  <td>{record.row_available ? "是" : "否"}</td>
                   <td className="mx-w1">{record.email}</td>
                   <td>XGEN{record.ticket_id}</td>
                   <td className="mx-w1">{record.url}</td>

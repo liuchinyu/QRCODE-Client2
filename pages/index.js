@@ -17,10 +17,7 @@ export default function Home() {
       <div className="background background-phone"></div>
 
       <div className="content">
-        <button
-          className="btn-entrance btn-md-entrance btn-lg-entrance"
-          onClick={handleLogin}
-        >
+        <button className="btn-entrance" onClick={handleLogin}>
           線上取票入口
         </button>
       </div>

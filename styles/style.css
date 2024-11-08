@@ -336,8 +336,6 @@
   .inform {
     color: red;
     font-size: 1.6rem;
-    font-weight: bold;
-    position: absolute;
     top: calc(0% - 9rem);
   }
   .btn-ticket {
@@ -786,50 +784,31 @@
 /* md */
 @media (min-width: 768px) {
   /* 背景設定 */
-
   /* home */
-  .btn-md-entrance {
+  .btn-entrance {
     font-size: 1.5rem;
     width: 12rem;
-    font-weight: bold;
-    color: red;
-    background-color: lightgray;
     padding: 1rem 0rem;
-    border: none;
-    border-radius: 10px;
   }
   /* company */
-  .inform-md {
-    color: red;
+  .inform {
     font-size: 1.5rem;
-    font-weight: bold;
-    position: absolute;
     top: 0;
     margin-top: 3.5rem;
   }
-  .btn-md-ticket {
-    background-color: lightgray;
-    color: black;
+  .btn-ticket {
     font-size: 1.3rem;
-    font-weight: bold;
     margin-bottom: 5rem;
     position: static;
     padding: 10px;
   }
-  .form-md-control {
-    color: black;
+  .form-control {
     font-size: 1rem;
-    font-weight: bold;
     width: 60%;
-
     margin-bottom: 5rem;
   }
-  .btn-md-get-ticket {
-    color: black;
-    background-color: lightgray;
+  .btn-get-ticket {
     font-size: 1.3rem;
-    font-weight: bold;
-    position: absolute;
     top: 15rem;
   }
   /* newform */
@@ -921,30 +900,20 @@
     background-image: url("../public/ticket-2.png");
   }
   /* home */
-  .btn-lg-entrance {
+  .btn-entrance {
     font-size: 1.8rem;
     width: 14rem;
-    font-weight: bold;
-    color: red;
-    background-color: lightgray;
     padding: 1.3rem 0rem;
-    border: none;
-    border-radius: 10px;
   }
   /* company */
-  .inform-lg {
+  .inform {
     color: red;
     font-size: 1.6rem;
-    font-weight: bold;
-    position: absolute;
     top: 0;
   }
   /* company */
-  .btn-lg-get-ticket {
-    color: black;
-    background-color: lightgray;
+  .btn-get-ticket {
     font-size: 1.5rem;
-    font-weight: bold;
     position: static;
     padding: 10px 15px;
   }
@@ -1015,6 +984,34 @@
 }
 
 @media (min-width: 1285px) {
+  /* index */
+  .btn-entrance {
+    font-size: 2.25rem;
+    width: 16rem;
+    padding: 1.3rem 1rem;
+    margin-top: 2rem;
+  }
+  /* company */
+  .inform {
+    font-size: 2rem;
+  }
+  .btn-ticket {
+    font-size: 1.6rem;
+    margin-bottom: 5rem;
+    padding: 10px;
+  }
+  .form-control {
+    font-size: 1.5rem;
+    width: 50%;
+    margin-bottom: 5rem;
+  }
+
+  .btn-get-ticket {
+    font-size: 2rem;
+    position: static;
+    padding: 13px 20px;
+  }
+
   /* newForm */
   .company-name {
     font-size: 2rem;
@@ -1022,9 +1019,8 @@
     position: absolute;
     top: calc(0% - 2.85rem);
     left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    padding: 0.6rem;
+
+    padding: 1rem 1.35rem;
   }
   .btn-form {
     font-size: 1.35rem;
@@ -1043,9 +1039,9 @@
     margin: 2px 0px;
   }
   .btn-get-form {
-    font-size: 2rem;
+    font-size: 2.15rem;
     width: 12rem;
-    padding: 8px 12px;
+    padding: 10px 12px;
     top: calc(75% + 8.5rem);
   }
   .inform-newForm {
@@ -1058,5 +1054,20 @@
   }
   .font-lg {
     font-size: 1.25rem;
+  }
+  /* QRCODE */
+  .inform-qrcode {
+    font-size: 1.6rem;
+    top: 10%;
+    text-align: end;
+  }
+  .service {
+    top: calc(30%);
+    font-size: 1.6rem;
+  }
+  .btn-login {
+    font-size: 2.15rem;
+    top: calc(55% + 1rem);
+    padding: 15px 20px;
   }
 }

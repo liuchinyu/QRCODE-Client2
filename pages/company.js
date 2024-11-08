@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import CustomAlert from "./customAlert";
 import axios from "axios";
 
-const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+// const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+const API_URL = "http://localhost:8080/api/user/";
 
 export default function company() {
   const [username, setUsername] = useState("");
@@ -63,21 +64,16 @@ export default function company() {
     <div className="background-container position-relative d-flex justify-content-center align-items-center">
       <div className="background-ticket background-phone2"></div>
       <div className="content d-flex flex-wrap justify-content-center">
-        <div className="inform-lg inform-md inform">
-          請輸入取票識別碼進行線上取票
-        </div>
-        <button className="btn-ticket btn-md-ticket">取票識別碼</button>
+        <div className="inform">請輸入取票識別碼進行線上取票</div>
+        <button className="btn-ticket">取票識別碼</button>
         <input
           type="text"
           onChange={handelUserName}
           name="username"
           id="username"
-          className="form-control form-md-control"
+          className="form-control text-center"
         />
-        <button
-          className="btn-lg-get-ticket btn-md-get-ticket btn-get-ticket"
-          onClick={handleLogin}
-        >
+        <button className="btn-get-ticket" onClick={handleLogin}>
           領取票券
         </button>
       </div>

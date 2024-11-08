@@ -119,6 +119,7 @@ const QRCodePage = () => {
         names &&
         numbers &&
         data &&
+        seatAreas &&
         seatAreas.length > 0
       ) {
         const qrPromises = Array.from(
@@ -226,7 +227,7 @@ const QRCodePage = () => {
           <div className="background-ticket-2"></div>
           <div className="d-flex flex-column align-items-center w-75">
             {numbers + kidNumbers == 1 && (
-              <div className="inform-qrcode-md inform-qrcode text-center">
+              <div className="inform-qrcode text-center">
                 領票成功!已領取1張入場電子票券！
                 <br />
                 已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
@@ -235,7 +236,7 @@ const QRCodePage = () => {
               </div>
             )}
             {numbers + kidNumbers > 1 && (
-              <div className="inform-qrcode-md inform-qrcode text-center">
+              <div className="inform-qrcode text-center">
                 領票成功!已領取{numbers + kidNumbers}張入場電子票券！
                 <br />
                 已將領取的入場電子票券QRCODE發送至 {emails}，請至信箱確認。
@@ -255,7 +256,7 @@ const QRCodePage = () => {
               服務時間：週一到週五 09:00~18:00
             </div>
 
-            <button className="btn-login " onClick={handleLogin}>
+            <button className="btn-login" onClick={handleLogin}>
               繼續取票
             </button>
 

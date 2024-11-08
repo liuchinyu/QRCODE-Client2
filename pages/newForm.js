@@ -172,65 +172,57 @@ export default function newForm() {
             <div className="row">
               <div className="col-12 d-flex justify-content-center">
                 {/* 手機以上 */}
-                <h2 className="d-none d-sm-block inform-lg-newForm inform-md-newForm inform-newForm">
+                <h2 className="d-none d-sm-block inform-newForm">
                   ＊＊請確認當天出席人數再進行取票，每張入場電子票券僅限１位大人使用
                 </h2>
                 {/* 手機 */}
-                <h2 className="d-sm-none inform-lg-newForm inform-md-newForm inform-newForm">
+                <h2 className="d-sm-none inform-newForm">
                   請確認當天出席人數再進行取票<br></br>
                   每張入場電子票券僅限１位大人使用
                 </h2>
-                <h2 className="d-none d-sm-block inform-lg-newForm-2 inform-md-newForm-2 inform-newForm-2">
+                <h2 className="d-none d-sm-block inform-newForm-2">
                   ＊＊12歲以下的孩童可免費入場，請確實填寫人數以利安排座位
                 </h2>
-                <h2 className="d-sm-none inform-lg-newForm-2 inform-md-newForm-2 inform-newForm-2">
+                <h2 className="d-sm-none inform-newForm-2">
                   12歲以下的孩童可免費入場，請確實填寫人數以利安排座位
                 </h2>
               </div>
               <div className="col-12 pb-lg-0 pb-md-2 pb-4">
-                <h1 className="company-name-lg company-name-md company-name ">
-                  {names}
-                </h1>
+                <h1 className="company-name">{names}</h1>
               </div>
 
               <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
-                <div className="btn-lg-form btn-md-form btn-form">
-                  ＊領票人姓名：
-                </div>
+                <div className="btn-form">＊領票人姓名：</div>
               </div>
               <div className="col-6">
                 <input
                   type="text"
                   onChange={handelUserName}
-                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
+                  className="btn btn-light btn-lg d-flex input-form"
                   name="username"
                   id="username"
                   required
                 />
               </div>
               <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
-                <div className="btn-lg-form btn-md-form btn-form">
-                  ＊Email：
-                </div>
+                <div className="btn-form">＊Email：</div>
               </div>
               <div className="col-6">
                 <input
                   type="email"
                   onChange={handleEmail}
-                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form font-lg"
+                  className="btn btn-light btn-lg d-flex input-form font-lg"
                   required
                 />
               </div>
               <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
-                <div className="btn-lg-form btn-md-form btn-form">
-                  ＊大人的人數：
-                </div>
+                <div className="btn-form">＊大人的人數：</div>
               </div>
               <div className="col-6">
                 <input
                   type="number"
                   onChange={handelNumber}
-                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form "
+                  className="btn btn-light btn-lg d-flex input-form "
                   name="number"
                   id="number"
                   min="0"
@@ -238,15 +230,13 @@ export default function newForm() {
                 />
               </div>
               <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
-                <div className="btn-lg-form btn-md-form btn-form">
-                  ＊12歲以下孩童的人數：
-                </div>
+                <div className="btn-form">＊12歲以下孩童的人數：</div>
               </div>
               <div className="col-6">
                 <input
                   type="number"
                   onChange={handelKidNumber}
-                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form"
+                  className="btn btn-light btn-lg d-flex input-form"
                   name="number"
                   id="number"
                   min="0"
@@ -255,7 +245,7 @@ export default function newForm() {
                 />
               </div>
               <div className="col-6 d-flex justify-content-end pb-lg-6 pb-md-5 pb-1 phone-5">
-                <div className="btn-lg-form btn-md-form btn-form btn-yellow">
+                <div className="btn-form btn-yellow">
                   ＊入場電子票券數量總計：
                 </div>
               </div>
@@ -263,7 +253,7 @@ export default function newForm() {
                 <input
                   type="text"
                   onChange={handelNumber}
-                  className="btn btn-light btn-lg d-flex input-lg-form input-md-form input-form limit"
+                  className="btn btn-light btn-lg d-flex input-form limit"
                   name="number"
                   id="number"
                   value={returnNumber(numbers) + returnNumber(kidNumbers)}
@@ -274,10 +264,7 @@ export default function newForm() {
               </div>
 
               <div className="col-12 d-flex justify-content-center">
-                <button
-                  className="btn-form btn-get-lg-form btn-get-md-form btn-get-form"
-                  onClick={handleLogin}
-                >
+                <button className="btn-get-form" onClick={handleLogin}>
                   確認取票
                 </button>
               </div>

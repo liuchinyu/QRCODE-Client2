@@ -194,11 +194,16 @@
 }
 
 .btn-get-form {
+  color: black;
+  background-color: lightgray;
+  border-radius: 10px;
+  border: none;
   position: absolute;
+  top: calc(50% + 5.5rem);
   padding: 3px 2px;
   width: 4rem;
   font-size: 0.55rem;
-  top: calc(50% + 5.5rem);
+  font-weight: bold;
 }
 /* QRCODE */
 .inform-qrcode {
@@ -474,7 +479,6 @@
     top: 1.75rem;
   }
   .input-form {
-    position: relative;
     top: 1.75rem;
     left: -0.85rem;
     font-size: 0.85rem;
@@ -549,7 +553,6 @@
     top: 3rem;
   }
   .input-form {
-    position: relative;
     top: 3rem;
     left: -0.5rem;
     font-size: 0.85rem;
@@ -628,7 +631,6 @@
     top: 3rem;
   }
   .input-form {
-    position: relative;
     top: 3rem;
     left: -0.85rem;
     font-size: 0.85rem;
@@ -733,7 +735,6 @@
     top: 6rem;
   }
   .input-form {
-    position: relative;
     top: 6rem;
     left: -0.5rem;
     font-size: 0.85rem;
@@ -836,56 +837,41 @@
     max-width: 875px !important;
   }
 
-  .inform-md-newForm {
-    color: red;
+  .inform-newForm {
     font-size: 1rem;
-    position: absolute;
     top: -5.5rem;
   }
 
-  .inform-md-newForm-2 {
-    color: red;
+  .inform-newForm-2 {
     font-size: 1rem;
-    position: absolute;
     top: -4rem;
   }
 
-  .company-name-md {
-    background-color: lightgray;
-    color: black;
+  .company-name {
     font-size: 1.15rem;
-    font-weight: bold;
-    position: absolute;
     top: -9%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
     border-radius: 10px;
     padding: 0.8rem 1.35rem;
   }
-  .btn-md-form {
-    color: black;
-    background-color: lightgray;
+  .btn-form {
     font-size: 0.9rem;
-    font-weight: bold;
     width: 16rem;
-    border-radius: 10px;
-    border: none;
     padding: 10px;
     position: absolute;
     left: calc(50% - 16rem);
   }
 
-  .btn-get-md-form {
+  .btn-get-form {
     font-size: 1rem;
     width: 9rem;
     padding: 10px;
     top: 15.5rem;
   }
 
-  .input-md-form {
-    color: black;
+  .input-form {
     font-size: 1rem;
-    font-weight: bold;
     width: 15rem;
     border-radius: 10px;
     padding: 7px;
@@ -967,56 +953,43 @@
     padding-bottom: 3.15rem !important;
   }
 
-  .input-lg-form {
-    color: black;
+  .input-form {
     font-size: 1.1rem;
-    font-weight: bold;
     width: 18.5rem;
     height: 8vh;
     border-radius: 10px;
     /* padding: 8px; */
   }
 
-  .inform-lg-newForm {
-    color: red;
+  .inform-newForm {
     font-size: 1.3rem;
-    position: absolute;
     top: -8.5rem;
   }
-  .inform-lg-newForm-2 {
-    color: red;
+  .inform-newForm-2 {
     font-size: 1.3rem;
-    position: absolute;
     top: -6.5rem;
   }
-  .company-name-lg {
-    background-color: lightgray;
-    color: black;
-    font-size: 1.4rem;
+  .company-name {
+    font-size: 1.5rem;
     font-weight: bold;
     position: absolute;
-    top: -17%;
+    top: calc(0% - 2rem);
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    padding: 1.15rem 1.5rem;
+    padding: 0.6rem;
   }
-  .btn-lg-form {
-    color: black;
-    background-color: lightgray;
+
+  .btn-form {
     font-size: 1rem;
-    font-weight: bold;
     width: 16rem;
-    border-radiu55s: 10px;
-    border: none;
     padding: 11px;
-    position: absolute;
     left: calc(50% - 16rem);
   }
-  .btn-get-lg-form {
+  .btn-get-form {
     font-size: 1.5rem;
     width: 10rem;
-    padding: 12px;
+    padding: 8px 12px;
     top: 17rem;
   }
   .font-lg {
@@ -1038,5 +1011,52 @@
   }
   .container {
     max-width: 960px !important;
+  }
+}
+
+@media (min-width: 1285px) {
+  /* newForm */
+  .company-name {
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    top: calc(0% - 2.85rem);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    padding: 0.6rem;
+  }
+  .btn-form {
+    font-size: 1.35rem;
+    width: 18rem;
+    margin: 2.5px 0px;
+    padding: 20px 11px;
+    /* height: 7vh; */
+    left: calc(40% - 6.4rem);
+  }
+  .input-form {
+    font-size: 1.35rem;
+    width: 20.5rem;
+    /* height: 7.5vh; */
+    border-radius: 10px;
+    /* padding: 8px; */
+    margin: 2px 0px;
+  }
+  .btn-get-form {
+    font-size: 2rem;
+    width: 12rem;
+    padding: 8px 12px;
+    top: calc(75% + 8.5rem);
+  }
+  .inform-newForm {
+    font-size: 1.75rem;
+    top: -10.5rem;
+  }
+  .inform-newForm-2 {
+    font-size: 1.75rem;
+    top: -8rem;
+  }
+  .font-lg {
+    font-size: 1.25rem;
   }
 }

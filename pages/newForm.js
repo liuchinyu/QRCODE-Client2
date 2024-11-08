@@ -3,7 +3,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CustomAlert from "./customAlert";
 
-const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+// const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+const API_URL = "http://localhost:8080/api/user/";
 
 export default function newForm() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function newForm() {
   const [names, setName] = useState(""); //公司名稱
   const [seat, setSeat] = useState(""); //座位
   const [ticket, setTicket] = useState(""); //剩餘票券
+  let [seatRest, setSeatRest] = useState(""); //剩餘座位
   const [message, setMessage] = useState(""); //錯誤訊息
   const [username, setUsername] = useState(""); //領票人
   const [emails, setEmail] = useState(""); //領票信箱
@@ -44,6 +46,7 @@ export default function newForm() {
       setName(userData.name);
       setSeat(userData.seat);
       setTicket(userData.ticket_rest);
+      setSeatRest(userData.seat_rest);
       setCompany(userData.type);
     }
   }, [userData]);
@@ -54,11 +57,9 @@ export default function newForm() {
   const handelKidNumber = (e) => {
     setKidNumber(parseInt(e.target.value));
   };
-
   const handelUserName = (e) => {
     setUsername(e.target.value);
   };
-
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -90,6 +91,14 @@ export default function newForm() {
     } else if (!emailRegex.test(emails)) {
       errorMessage += "信箱格式不正確\n";
     }
+    if (numbers + kidNumbers > seatRest) {
+      errorMessage +=
+        "欲領取票券大於目前剩餘座位，如有問題請洽相關窗口，謝謝!\n";
+    } else {
+      seatRest = seatRest - numbers - kidNumbers;
+    }
+    console.log("seatRest", seatRest);
+
     if (numbers > ticket) {
       errorMessage += "領取票券大於可領取數量\n";
     } else if (numbers == 0) {
@@ -99,11 +108,13 @@ export default function newForm() {
     }
     setMessage(errorMessage);
     if (errorMessage.length == 0) {
+      console.log("insert的seatRest", seatRest);
       let result = await axios.post(
         API_URL + "update_data",
         {
           password,
           ticket_left,
+          seatRest,
         },
         {
           headers: {
@@ -111,6 +122,7 @@ export default function newForm() {
           },
         }
       );
+      console.log("更新後的result", result);
 
       router.push({
         pathname: "/QRCodeGenerator",

@@ -1,4 +1,3 @@
-//--新檔
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import QRCode from "qrcode";
@@ -37,9 +36,11 @@ const QRCodePage = () => {
   };
 
   const handleLogin = () => {
-    router.push({
-      pathname: "/company",
-    });
+    setTimeout(() => {
+      router.push({
+        pathname: "/company",
+      });
+    }, 1000);
   };
 
   const handleAlertClose = () => {
@@ -47,6 +48,7 @@ const QRCodePage = () => {
   };
 
   const emailSentRef = useRef(false);
+
   if (router.query && router.query.company == "company") {
     textToEncode =
       "活動名稱：接棒未來 揮出夢想\n公司名稱：" +
@@ -56,10 +58,7 @@ const QRCodePage = () => {
       "\n大人人數：" +
       numbers +
       "\n孩童人數：" +
-      kidNumbers +
-      "\n座位區域：" +
-      seat +
-      "區";
+      kidNumbers;
   } else if (router.query && router.query.company == "person") {
     textToEncode =
       "活動名稱：接棒未來 揮出夢想\n捐贈人名稱：" +
@@ -69,10 +68,7 @@ const QRCodePage = () => {
       "\n大人人數：" +
       numbers +
       "\n孩童人數：" +
-      kidNumbers +
-      "\n座位區域：" +
-      seat +
-      "區";
+      kidNumbers;
   }
   //儲存拋轉資料
   useEffect(() => {
@@ -96,14 +92,47 @@ const QRCodePage = () => {
       const numericData = Number(data);
       setTicket(numericData);
 
+      const seat_info = await fetch(API_URL + "get-seat-number", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          qrCodeUrl,
+          company,
+          names,
+          seat,
+          username,
+          numbers,
+          ticketLeft,
+          kidNumbers,
+          emails,
+          ticketNum,
+        }),
+      });
+      const seat_data = await seat_info.json();
+      const seatAreas = seat_data.seatAreas; // 獲取座位區域陣列
+
       // 生成 QRCODE並發送郵件
-      if (textToEncode.trim() && names && numbers && data) {
+      if (
+        textToEncode.trim() &&
+        names &&
+        numbers &&
+        data &&
+        seatAreas.length > 0
+      ) {
         const qrPromises = Array.from(
           { length: numbers + kidNumbers },
           (_, index) => {
-            const individualText = `${textToEncode}\n票券號碼：${
-              "XGEN" + (numericData + index + 1)
-            }`;
+            const individualText = `${textToEncode}\n座位：${
+              seatAreas[index].seat +
+              "區" +
+              seatAreas[index].seat_row +
+              "排" +
+              seatAreas[index].seat_number +
+              "號"
+            }\n票券號碼：${"XGEN" + (numericData + index + 1)}
+            `;
             return new Promise((resolve, reject) => {
               QRCode.toDataURL(
                 individualText,

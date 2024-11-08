@@ -13,7 +13,7 @@ export default function record() {
       try {
         let result = await axios.get(API_URL + "record");
         let result_arr = result.data;
-        result_arr.map((t, index) => console.log(t));
+        // result_arr.map((t, index) => console.log(t));
         setRecords(result_arr);
       } catch (e) {
         console.log(e);
@@ -62,7 +62,7 @@ export default function record() {
                   <td>{record.taker}</td>
                   <td>{record.ticket_count}</td>
                   <td>{record.ticket_kid}</td>
-                  <td>{record.ticket_count}</td>
+                  <td>{record.ticket_count + record.ticket_kid}</td>
                   <td>{record.ticket_left}</td>
                   <td>{record.seat_area}</td>
                   <td>{record.seat_row}</td>

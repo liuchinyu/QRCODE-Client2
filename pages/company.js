@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import CustomAlert from "./customAlert";
 import axios from "axios";
 
-// const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
-const API_URL = "http://localhost:8080/api/user/";
+const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+// const API_URL = "http://localhost:8080/api/user/";
 
 export default function company() {
   const [username, setUsername] = useState("");

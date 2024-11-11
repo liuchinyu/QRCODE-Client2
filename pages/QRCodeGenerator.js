@@ -92,27 +92,32 @@ const QRCodePage = () => {
       const numericData = Number(data);
       setTicket(numericData);
 
-      const seat_info = await fetch(API_URL + "get-seat-number", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          qrCodeUrl,
-          company,
-          names,
-          seat,
-          username,
-          numbers,
-          ticketLeft,
-          kidNumbers,
-          emails,
-          ticketNum,
-        }),
-      });
-      const seat_data = await seat_info.json();
-      const seatAreas = seat_data.seatAreas; // 獲取座位區域陣列
-
+      let seat_data = "";
+      let seatAreas = "";
+      if (textToEncode.trim() && names && numbers && data) {
+        const seat_info = await fetch(API_URL + "get-seat-number", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            qrCodeUrl,
+            company,
+            names,
+            seat,
+            username,
+            numbers,
+            ticketLeft,
+            kidNumbers,
+            emails,
+            ticketNum,
+          }),
+        });
+        seat_data = await seat_info.json();
+        seatAreas = seat_data.seatAreas; // 獲取座位區域陣列
+      }
+      console.log("seat_data", seat_data);
+      console.log("seatAreas", seatAreas);
       // 生成 QRCODE並發送郵件
       if (
         textToEncode.trim() &&

@@ -16,11 +16,14 @@ export default function newForm() {
   const [seat, setSeat] = useState(""); //座位
   const [ticket, setTicket] = useState(""); //剩餘票券
   let [seatRest, setSeatRest] = useState(""); //剩餘座位
+  let [bufferRest, setBufferRest] = useState(""); //剩餘Buffer區座位
+  let [bufferNum, setBufferNum] = useState(0);
   const [message, setMessage] = useState(""); //錯誤訊息
   const [username, setUsername] = useState(""); //領票人
   const [emails, setEmail] = useState(""); //領票信箱
   const [numbers, setNumber] = useState(""); //大人領票張數
   const [kidNumbers, setKidNumber] = useState(""); //小孩人數
+
   const [currentUser, setCurrentUser] = useState("");
 
   //儲存訊息
@@ -47,6 +50,7 @@ export default function newForm() {
       setSeat(userData.seat);
       setTicket(userData.ticket_rest);
       setSeatRest(userData.seat_rest);
+      setBufferRest(userData.buffer_rest);
       setCompany(userData.type);
     }
   }, [userData]);
@@ -92,12 +96,21 @@ export default function newForm() {
       errorMessage += "信箱格式不正確\n";
     }
     if (numbers + kidNumbers > seatRest) {
-      errorMessage +=
-        "欲領取票券大於目前剩餘座位，如有問題請洽相關窗口，謝謝!\n";
+      if (numbers + kidNumbers > seatRest + bufferRest) {
+        errorMessage +=
+          "欲領取票券大於目前剩餘座位，如有問題請洽相關窗口，謝謝!\n";
+      } else {
+        bufferNum = numbers + kidNumbers - seatRest;
+        console.log("bufferNum", bufferNum);
+        bufferRest -= bufferNum;
+        console.log("bufferRest", bufferRest);
+      }
+      // setJumpBuffer
     } else {
       seatRest = seatRest - numbers - kidNumbers;
     }
     console.log("seatRest", seatRest);
+    console.log("bufferRest", bufferRest);
 
     if (numbers > ticket) {
       errorMessage += "領取票券大於可領取數量\n";
@@ -109,20 +122,38 @@ export default function newForm() {
     setMessage(errorMessage);
     if (errorMessage.length == 0) {
       console.log("insert的seatRest", seatRest);
-      let result = await axios.post(
-        API_URL + "update_data",
-        {
-          password,
-          ticket_left,
-          seatRest,
-        },
-        {
-          headers: {
-            Authorization: currentUser,
+      // 有使用到buffer區
+      if (bufferNum > 0) {
+        let result = await axios.post(
+          API_URL + "update_buffer_data",
+          {
+            bufferRest,
           },
+          {
+            headers: {
+              Authorization: currentUser,
+            },
+          }
+        );
+      }
+
+      if (seatRest > 0) {
+        {
+          let result = await axios.post(
+            API_URL + "update_data",
+            {
+              password,
+              ticket_left,
+              seatRest,
+            },
+            {
+              headers: {
+                Authorization: currentUser,
+              },
+            }
+          );
         }
-      );
-      console.log("更新後的result", result);
+      }
 
       router.push({
         pathname: "/QRCodeGenerator",

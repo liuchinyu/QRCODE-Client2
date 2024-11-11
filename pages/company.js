@@ -29,11 +29,21 @@ export default function company() {
         password,
       });
 
+      console.log("result.data.data1", result.data.data.seat_rest);
+      console.log(typeof result.data.data.seat_rest);
+
       if (result.data.data) {
         localStorage.setItem("user", JSON.stringify(result.data.token));
         setAlertMessage("登入成功跳轉表單");
         setLoginSuccess(true);
         setShowAlert(true);
+        // 判斷當前參加人員是否有坐到Buffer區
+
+        let getBuffer = await axios.get(API_URL + "getBufferNum");
+        let getBufferNum = getBuffer.data;
+
+        result.data.data.buffer_rest = getBufferNum.data;
+        console.log("result.data.data", result.data.data);
         setLoginData({
           userData: JSON.stringify(result.data.data),
           password: password,

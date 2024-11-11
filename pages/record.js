@@ -45,6 +45,7 @@ export default function record() {
                 <th>孩童人數</th>
                 <th>領取入場電子票券的張數</th>
                 <th>票券剩餘張數</th>
+                <th>Buffer區</th>
                 <th>座位區域</th>
                 <th>座位排數</th>
                 <th>座位編號</th>
@@ -64,6 +65,7 @@ export default function record() {
                   <td>{record.ticket_kid}</td>
                   <td>{record.ticket_count + record.ticket_kid}</td>
                   <td>{record.ticket_left}</td>
+                  <td>{record.buffer_area ? "是" : "否"}</td>
                   <td>{record.seat_area}</td>
                   <td>{record.seat_row}</td>
                   <td>{record.seat_number}</td>

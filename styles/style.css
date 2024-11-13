@@ -164,6 +164,7 @@
   transform: translate(-50%, -50%);
   border-radius: 10px;
   padding: 0.6rem;
+  white-space: nowrap;
 }
 .btn-form {
   color: black;
@@ -404,8 +405,8 @@
     padding: 8px 6px;
     width: 7rem;
     font-size: 1.35rem;
-    top: 1rem;
-    left: -0rem;
+    top: calc(50% + 8rem);
+    left: calc(25% + 2.85rem);
   }
   .font-lg {
     font-size: 0.7rem;
@@ -487,8 +488,8 @@
     padding: 8px 6px;
     width: 7rem;
     font-size: 1.35rem;
-    top: 2rem;
-    left: 0rem;
+    top: calc(85% + 4rem);
+    left: calc(25% + 2rem);
   }
   .font-lg {
     font-size: 0.7rem;
@@ -561,8 +562,8 @@
     padding: 8px 6px;
     width: 7rem;
     font-size: 1.35rem;
-    top: 4rem;
-    left: 0rem;
+    top: calc(85% + 6rem);
+    left: calc(25% + 3rem);
   }
   .font-lg {
     font-size: 0.7rem;
@@ -639,8 +640,8 @@
     padding: 8px 6px;
     width: 7rem;
     font-size: 1.35rem;
-    top: 3.35rem;
-    left: 0rem;
+    top: calc(85% + 5.15rem);
+    left: calc(25% + 1.85rem);
   }
   .font-lg {
     font-size: 0.7rem;
@@ -743,8 +744,8 @@
     padding: 8px 6px;
     width: 7rem;
     font-size: 1.35rem;
-    top: 6rem;
-    left: 0rem;
+    top: calc(85% + 8rem);
+    left: calc(25% + 1.85rem);
   }
   .font-lg {
     font-size: 0.7rem;
@@ -1002,14 +1003,14 @@
   }
   .form-control {
     font-size: 1.5rem;
-    width: 50%;
+    width: 65%;
     margin-bottom: 5rem;
   }
 
   .btn-get-ticket {
     font-size: 2rem;
-    position: static;
-    padding: 13px 20px;
+    position: absolute;
+    padding: 12px 20px;
   }
 
   /* newForm */

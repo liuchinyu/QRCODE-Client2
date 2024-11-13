@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import QRCode from "qrcode";
 import CustomAlert from "./customAlert";
 
-const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
-// const API_URL = "http://localhost:8080/api/user/";
+// const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+const API_URL = "http://localhost:8080/api/user/";
 
 const QRCodePage = () => {
   const [qrCodeUrl, setQRCodeUrl] = useState("");
@@ -54,21 +54,13 @@ const QRCodePage = () => {
       "活動名稱：接棒未來 揮出夢想\n公司名稱：" +
       names +
       "\n領票人姓名：" +
-      username +
-      "\n大人人數：" +
-      numbers +
-      "\n孩童人數：" +
-      kidNumbers;
+      username;
   } else if (router.query && router.query.company == "person") {
     textToEncode =
       "活動名稱：接棒未來 揮出夢想\n捐贈人名稱：" +
       names +
       "\n領票人姓名：" +
-      username +
-      "\n大人人數：" +
-      numbers +
-      "\n孩童人數：" +
-      kidNumbers;
+      username;
   }
   //儲存拋轉資料
   useEffect(() => {
@@ -137,7 +129,9 @@ const QRCodePage = () => {
               "排" +
               seatAreas[index].seat_number +
               "號"
-            }\n票券號碼：${"XGEN" + (numericData + index + 1)}
+            }\n票券號碼：${
+              "XGEN" + (numericData + index + 1)
+            }\n大人人數：${numbers}\n孩童人數：${kidNumbers}
             `;
             return new Promise((resolve, reject) => {
               QRCode.toDataURL(

@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import CustomAlert from "./customAlert";
 
-const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
-// const API_URL = "http://localhost:8080/api/user/";
+// const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
+const API_URL = "http://localhost:8080/api/user/";
 
 export default function newForm() {
   const router = useRouter();
@@ -95,15 +95,24 @@ export default function newForm() {
     } else if (!emailRegex.test(emails)) {
       errorMessage += "信箱格式不正確\n";
     }
+    console.log("98seatRest", seatRest);
     if (numbers + kidNumbers > seatRest) {
       if (numbers + kidNumbers > seatRest + bufferRest) {
         errorMessage +=
           "欲領取票券大於目前剩餘座位，如有問題請洽相關窗口，謝謝!\n";
       } else {
-        bufferNum = numbers + kidNumbers - seatRest;
-        console.log("bufferNum", bufferNum);
-        bufferRest -= bufferNum;
-        console.log("bufferRest", bufferRest);
+        if (kidNumbers > 0 && numbers + kidNumbers < 6) {
+          bufferNum = numbers + kidNumbers;
+          bufferRest -= bufferNum;
+        } else {
+          bufferNum = numbers + kidNumbers - seatRest;
+          bufferRest -= bufferNum;
+          seatRest = 0;
+        }
+        //若觸發小孩跳轉到Buffer區
+        if (kidNumbers > 0 && numbers + kidNumbers > 5) {
+          seatRest = 0;
+        }
       }
       // setJumpBuffer
     } else {
@@ -122,6 +131,7 @@ export default function newForm() {
     setMessage(errorMessage);
     if (errorMessage.length == 0) {
       console.log("insert的seatRest", seatRest);
+      console.log("bufferNum134", bufferNum);
       // 有使用到buffer區
       if (bufferNum > 0) {
         let result = await axios.post(
@@ -137,23 +147,19 @@ export default function newForm() {
         );
       }
 
-      if (seatRest > 0) {
+      let result = await axios.post(
+        API_URL + "update_data",
         {
-          let result = await axios.post(
-            API_URL + "update_data",
-            {
-              password,
-              ticket_left,
-              seatRest,
-            },
-            {
-              headers: {
-                Authorization: currentUser,
-              },
-            }
-          );
+          password,
+          ticket_left,
+          seatRest,
+        },
+        {
+          headers: {
+            Authorization: currentUser,
+          },
         }
-      }
+      );
 
       router.push({
         pathname: "/QRCodeGenerator",

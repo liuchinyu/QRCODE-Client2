@@ -130,8 +130,6 @@ export default function newForm() {
     }
     setMessage(errorMessage);
     if (errorMessage.length == 0) {
-      console.log("insert的seatRest", seatRest);
-      console.log("bufferNum134", bufferNum);
       // 有使用到buffer區
       if (bufferNum > 0) {
         let result = await axios.post(

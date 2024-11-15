@@ -23,7 +23,7 @@ export default function company() {
 
   // 判斷輸入的驗證碼是否存在
   const handleLogin = async (e) => {
-    let password = username;
+    let password = username + 1;
     try {
       let result = await axios.post(API_URL + "login", {
         password,
@@ -45,13 +45,13 @@ export default function company() {
         });
       } else {
         //查無資料
-        setAlertMessage("識別碼輸入錯誤，請重新輸入");
+        setAlertMessage("網站維護中，不好意思請見諒");
         setShowAlert(true);
       }
     } catch (e) {
       console.log(e);
       console.log("E.message", e.message);
-      setAlertMessage("識別碼輸入錯誤，請重新輸入");
+      setAlertMessage("網站維護中，不好意思請見諒");
       setShowAlert(true);
     }
   };

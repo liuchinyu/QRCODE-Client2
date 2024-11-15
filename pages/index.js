@@ -8,7 +8,7 @@ export default function Home() {
   // console.log()
   const handleLogin = async (e) => {
     router.push({
-      pathname: "/company",
+      pathname: "/compan",
     });
   };
 

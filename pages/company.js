@@ -25,7 +25,7 @@ export default function company() {
   const handleLogin = async (e) => {
     let password = username + 1;
     try {
-      let result = await axios.post(API_URL + "login", {
+      let result = await axios.post(+"login", {
         password,
       });
 

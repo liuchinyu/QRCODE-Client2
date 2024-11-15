@@ -95,25 +95,27 @@ export default function newForm() {
     } else if (!emailRegex.test(emails)) {
       errorMessage += "信箱格式不正確\n";
     }
-    console.log("98seatRest", seatRest);
+
     if (numbers + kidNumbers > seatRest) {
-      if (numbers + kidNumbers > seatRest + bufferRest) {
-        errorMessage +=
-          "欲領取票券大於目前剩餘座位，如有問題請洽相關窗口，謝謝!\n";
-      } else {
-        if (kidNumbers > 0 && numbers + kidNumbers < 6) {
-          bufferNum = numbers + kidNumbers;
-          bufferRest -= bufferNum;
-        } else {
-          bufferNum = numbers + kidNumbers - seatRest;
-          bufferRest -= bufferNum;
-          seatRest = 0;
-        }
-        //若觸發小孩跳轉到Buffer區
-        if (kidNumbers > 0 && numbers + kidNumbers > 5) {
-          seatRest = 0;
-        }
-      }
+      errorMessage +=
+        "已超過目前可領取票券，如有需要請洽相關窗口進行人工劃位，謝謝!\n";
+      // if (numbers + kidNumbers > seatRest + bufferRest) {
+      //   errorMessage +=
+      //     "欲領取票券大於目前剩餘座位，如有問題請洽相關窗口，謝謝!\n";
+      // } else {
+      //   if (kidNumbers > 0 && numbers + kidNumbers < 6) {
+      //     bufferNum = numbers + kidNumbers;
+      //     bufferRest -= bufferNum;
+      //   } else {
+      //     bufferNum = numbers + kidNumbers - seatRest;
+      //     bufferRest -= bufferNum;
+      //     seatRest = 0;
+      //   }
+      //   //若觸發小孩跳轉到Buffer區
+      //   if (kidNumbers > 0 && numbers + kidNumbers > 5) {
+      //     seatRest = 0;
+      //   }
+      // }
       // setJumpBuffer
     } else {
       seatRest = seatRest - numbers - kidNumbers;
@@ -131,19 +133,19 @@ export default function newForm() {
     setMessage(errorMessage);
     if (errorMessage.length == 0) {
       // 有使用到buffer區
-      if (bufferNum > 0) {
-        let result = await axios.post(
-          API_URL + "update_buffer_data",
-          {
-            bufferRest,
-          },
-          {
-            headers: {
-              Authorization: currentUser,
-            },
-          }
-        );
-      }
+      // if (bufferNum > 0) {
+      //   let result = await axios.post(
+      //     API_URL + "update_buffer_data",
+      //     {
+      //       bufferRest,
+      //     },
+      //     {
+      //       headers: {
+      //         Authorization: currentUser,
+      //       },
+      //     }
+      //   );
+      // }
 
       let result = await axios.post(
         API_URL + "update_data",

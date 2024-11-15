@@ -5,7 +5,7 @@ import CustomAlert from "./customAlert";
 
 const API_URL = "https://qrcode-server-438803.de.r.appspot.com/api/user/";
 // const API_URL = "http://localhost:8080/api/user/";
-
+console.log(1);
 export default function newForm() {
   const router = useRouter();
   const [userData, setUserData] = useState("");
@@ -121,7 +121,6 @@ export default function newForm() {
       seatRest = seatRest - numbers - kidNumbers;
     }
     console.log("seatRest", seatRest);
-    console.log("bufferRest", bufferRest);
 
     if (numbers > ticket) {
       errorMessage += "領取票券大於可領取數量\n";

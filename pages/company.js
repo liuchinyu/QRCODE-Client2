@@ -23,9 +23,9 @@ export default function company() {
 
   // 判斷輸入的驗證碼是否存在
   const handleLogin = async (e) => {
-    let password = username + 1;
+    let password = username;
     try {
-      let result = await axios.post(+"login", {
+      let result = await axios.post(API_URL + "login", {
         password,
       });
 
@@ -45,13 +45,14 @@ export default function company() {
         });
       } else {
         //查無資料
-        setAlertMessage("網站維護中，不好意思請見諒");
+        setAlertMessage("識別碼輸入錯誤，請重新再輸入一次");
         setShowAlert(true);
       }
     } catch (e) {
       console.log(e);
       console.log("E.message", e.message);
-      setAlertMessage("網站維護中，不好意思請見諒");
+      setAlertMessage("識別碼輸入錯誤，請重新再輸入一次");
+      // setAlertMessage("網站維護中，不好意思請見諒");
       setShowAlert(true);
     }
   };
